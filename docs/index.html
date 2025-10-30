@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Travel Explorer</title>
+  <title>Dream Destinations</title>
   <style>
     * {
       margin: 0;
@@ -13,42 +13,38 @@
     }
 
     body {
-      scroll-behavior: smooth;
-      background-color: #f0f4f8;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: #333;
+      overflow-x: hidden;
     }
 
-    /* Header */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #0072ff, #00c6ff);
-      color: white;
-      padding: 15px 0;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    header h1 {
+      background: rgba(255, 255, 255, 0.9);
       text-align: center;
-      font-size: 30px;
-      letter-spacing: 2px;
+      padding: 25px 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0072ff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     nav {
-      text-align: center;
-      margin-top: 10px;
+      background: #0072ff;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px 0;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
-      padding: 8px 15px;
-      border-radius: 20px;
-      transition: 0.3s;
+      font-size: 17px;
       font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 25px;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -56,67 +52,36 @@
       color: #0072ff;
     }
 
-    /* Section styling */
-    section {
-      padding: 100px 20px;
+    .container {
       text-align: center;
-      min-height: 100vh;
+      padding: 70px 20px;
     }
 
-    /* Home Section */
-    #home {
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #home h2 {
-      font-size: 45px;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 15px;
-    }
-
-    #home p {
-      margin-top: 15px;
-      font-size: 18px;
-      background: rgba(0,0,0,0.4);
-      padding: 10px 20px;
-      border-radius: 10px;
-    }
-
-    /* Places Section */
-    #places {
-      background-color: #e9f5ff;
-    }
-
-    #places h2 {
+    .container h2 {
+      font-size: 34px;
       color: #0072ff;
-      margin-bottom: 30px;
-      font-size: 32px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      gap: 35px;
       justify-items: center;
     }
 
     .card {
       background: white;
-      border-radius: 15px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: 0.3s;
-      width: 260px;
+      transition: 0.4s;
+      width: 270px;
     }
 
     .card:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
     }
 
     .card img {
@@ -126,180 +91,163 @@
     }
 
     .card h3 {
-      margin: 10px 0;
       color: #0072ff;
+      margin: 15px 0;
     }
 
     .card button {
       background: #0072ff;
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 10px 25px;
+      border-radius: 25px;
+      margin-bottom: 20px;
       cursor: pointer;
-      margin-bottom: 15px;
       transition: 0.3s;
     }
 
     .card button:hover {
       background: #00c6ff;
+      transform: scale(1.05);
     }
 
-    /* About */
-    #about {
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      padding: 25px 0;
+      font-size: 15px;
+      color: #0072ff;
+      font-weight: 500;
+      margin-top: 80px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Popup Form */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .popup-content {
       background: white;
-      color: #333;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
-    #about h2 {
+    .popup-content h2 {
       color: #0072ff;
       margin-bottom: 15px;
     }
 
-    #about p {
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.6;
-      font-size: 18px;
-    }
-
-    /* Contact */
-    #contact {
-      background: linear-gradient(120deg, #0072ff, #00c6ff);
-      color: white;
-    }
-
-    #contact h2 {
-      margin-bottom: 20px;
-    }
-
-    form {
-      background: white;
-      color: black;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    input, textarea {
-      width: 100%;
+    .popup-content input {
+      width: 90%;
       margin: 10px 0;
       padding: 10px;
+      border: 1px solid #0072ff;
       border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 16px;
+      outline: none;
     }
 
-    button.submit {
+    .popup-content button {
+      width: 95%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
       background: #0072ff;
       color: white;
-      padding: 10px 20px;
-      border: none;
+      font-weight: bold;
       border-radius: 25px;
       cursor: pointer;
       transition: 0.3s;
-      font-weight: bold;
     }
 
-    button.submit:hover {
+    .popup-content button:hover {
       background: #00c6ff;
     }
 
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>✈️ World Travel Explorer</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#places">Places</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <header>🌍 Dream Destinations</header>
 
-  <!-- Home -->
-  <section id="home">
-    <h2>Welcome to Your Dream Journey</h2>
-    <p>Explore, Book & Experience the Best Destinations Around the World 🌍</p>
-  </section>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Places</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
 
-  <!-- Places -->
-  <section id="places">
-    <h2>Top Travel Destinations</h2>
+  <div class="container">
+    <h2>Explore Beautiful Cities</h2>
     <div class="grid">
       <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Paris_Night.jpg" alt="Paris">
-        <h3>Paris, France</h3>
+        <h3>Paris</h3>
         <button onclick="openForm('Paris')">Visit Now</button>
       </div>
       <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Dubai_Skyline_2020.jpg" alt="Dubai">
+        <h3>Dubai</h3>
+        <button onclick="openForm('Dubai')">Visit Now</button>
+      </div>
+      <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/New_York_City_at_night_HDR.jpg" alt="New York">
-        <h3>New York, USA</h3>
+        <h3>New York</h3>
         <button onclick="openForm('New York')">Visit Now</button>
       </div>
       <div class="card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tokyo_Montage_2015.jpg" alt="Tokyo">
-        <h3>Tokyo, Japan</h3>
+        <h3>Tokyo</h3>
         <button onclick="openForm('Tokyo')">Visit Now</button>
       </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Dubai_Skyline_2020.jpg" alt="Dubai">
-        <h3>Dubai, UAE</h3>
-        <button onclick="openForm('Dubai')">Visit Now</button>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      Welcome to World Travel Explorer – your trusted companion for exploring global destinations.  
-      We help you find beautiful cities, plan your trips, and experience new cultures with ease.  
-      Our mission is to make your travel dreams come true with just one click!
-    </p>
-  </section>
+  <footer>© 2025 Dream Destinations | Designed by Khushi 💖</footer>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact & Register</h2>
-    <form onsubmit="confirmBooking(event)">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <input type="text" id="destination" placeholder="Destination" required>
-      <textarea placeholder="Your Message"></textarea>
-      <button class="submit" type="submit">Submit</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2025 World Travel Explorer | Designed by Khushi 💖
-  </footer>
+  <!-- Popup Form -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>Book Your Trip</h2>
+      <input type="text" id="name" placeholder="Your Name">
+      <input type="email" id="email" placeholder="Your Email">
+      <input type="text" id="place" placeholder="Destination">
+      <button onclick="confirmBooking()">Submit</button>
+      <button onclick="closeForm()">Cancel</button>
+    </div>
+  </div>
 
   <script>
-    function openForm(city) {
-      document.getElementById("destination").value = city;
-      document.querySelector("#contact").scrollIntoView({ behavior: 'smooth' });
+    const popup = document.getElementById("popup");
+    const placeInput = document.getElementById("place");
+
+    function openForm(place) {
+      popup.style.display = "flex";
+      placeInput.value = place;
     }
 
-    function confirmBooking(event) {
-      event.preventDefault();
-      alert("🎉 Your booking is confirmed! We’ll contact you soon.");
-      document.querySelector("form").reset();
+    function closeForm() {
+      popup.style.display = "none";
+    }
+
+    function confirmBooking() {
+      alert("🎉 Your trip to " + placeInput.value + " is confirmed! Thank you for booking with Dream Destinations.");
+      closeForm();
     }
   </script>
+
 </body>
 </html>
