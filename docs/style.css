@@ -1,3 +1,4 @@
+/* -------------------- CSS -------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -72,6 +73,7 @@ nav ul li a:hover {
   border-radius: 30px;
   text-decoration: none;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -162,7 +164,7 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-input, textarea, select {
+input, textarea {
   width: 100%;
   margin-bottom: 15px;
   padding: 10px;
