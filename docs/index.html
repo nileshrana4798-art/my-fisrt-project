@@ -1,278 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World Travel Explorer 🌍</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Explorer</title>
   <style>
     * {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
+
     body {
-      background-color: #f6f8fa;
-      color: #333;
-      scroll-behavior: smooth;
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     header {
-      background: linear-gradient(90deg, #0077b6, #00b4d8);
-      color: white;
-      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
       padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 0;
     }
 
     nav a {
-      text-decoration: none;
       color: white;
-      margin: 0 12px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 8px;
+      text-decoration: none;
+      padding: 12px 25px;
+      margin: 0 10px;
+      border-radius: 25px;
       transition: 0.3s;
     }
+
     nav a:hover {
       background: white;
-      color: #0077b6;
+      color: #0072ff;
     }
 
-    /* Home Section */
-    .hero {
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover;
-      height: 75vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+    .container {
       text-align: center;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero h1 {
-      z-index: 1;
-      position: relative;
-      font-size: 3em;
+      padding: 50px 10px;
     }
 
-    /* Country Grid */
-    #countries {
-      padding: 60px 20px;
-      text-align: center;
+    .container h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
     }
-    #countries h2 {
-      color: #0077b6;
-      margin-bottom: 20px;
-    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
+      justify-items: center;
     }
-    .country {
+
+    .card {
       position: relative;
       overflow: hidden;
-      border-radius: 10px;
+      border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
+      width: 250px;
+      height: 180px;
     }
-    .country img {
+
+    .card img {
       width: 100%;
-      height: 220px;
+      height: 100%;
       object-fit: cover;
+      border-radius: 20px;
       transition: 0.3s;
     }
-    .country:hover img {
-      transform: scale(1.05);
-      filter: brightness(0.7);
+
+    .card:hover {
+      transform: scale(1.08);
     }
-    .country-name {
+
+    .card:hover img {
+      opacity: 0.7;
+    }
+
+    .card h3 {
       position: absolute;
-      bottom: 10px;
+      bottom: 15px;
       left: 0;
       right: 0;
-      color: white;
-      background: rgba(0,0,0,0.4);
-      padding: 6px 0;
-      font-size: 1.2em;
-      font-weight: bold;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 0 0 20px 20px;
     }
 
-    /* Info Section */
-    #info {
+    .visit-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: none;
-      padding: 60px 20px;
-      background: linear-gradient(90deg, #00b4d8, #48cae4);
-      color: white;
-      text-align: center;
-    }
-    #info h2 { margin-bottom: 10px; }
-    #info p { max-width: 700px; margin: 0 auto 20px; }
-    #info button {
-      background: white;
-      color: #0077b6;
+      background: #fff;
+      color: #0072ff;
+      padding: 10px 20px;
       border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
+      border-radius: 25px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
-    #info button:hover {
-      background: #023e8a;
-      color: white;
+
+    .card:hover .visit-btn {
+      display: block;
     }
 
-    /* Register Form */
-    #register {
+    /* Popup form */
+    .popup {
       display: none;
-      padding: 60px 20px;
-      background: #f1f5f9;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
       text-align: center;
     }
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    input, select {
+
+    .popup-content input, .popup-content button {
+      width: 90%;
+      margin: 10px 0;
       padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1em;
+      border: 1px solid #0072ff;
+      border-radius: 5px;
     }
-    button.submit {
-      background: #0077b6;
+
+    .popup-content button {
+      background: #0072ff;
       color: white;
       font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      padding: 10px;
+      cursor: pointer;
       transition: 0.3s;
     }
-    button.submit:hover {
-      background: #023e8a;
+
+    .popup-content button:hover {
+      background: #00c6ff;
     }
 
     footer {
-      background: #023e8a;
-      color: white;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.5);
       text-align: center;
-      padding: 10px 0;
+      padding: 20px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>World Travel Explorer 🌏</h1>
-    <nav>
-      <a href="#home" onclick="showSection('home')">Home</a>
-      <a href="#countries" onclick="showSection('countries')">Countries</a>
-    </nav>
-  </header>
+  <header>🌎 World Explorer</header>
 
-  <section class="hero" id="home">
-    <h1>Explore Beautiful Countries Around the World ✈️</h1>
-  </section>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Destinations</a>
+    <a href="#" onclick="openForm()">Register</a>
+    <a href="#">Contact</a>
+  </nav>
 
-  <section id="countries">
-    <h2>Choose Your Next Destination</h2>
+  <div class="container">
+    <h2>Explore Beautiful Cities</h2>
     <div class="grid">
-      <div class="country" onclick="showInfo('Japan')">
-        <img src="https://images.unsplash.com/photo-1558981359-219d6364c9b3" alt="Japan">
-        <div class="country-name">Japan 🇯🇵</div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Paris_Night.jpg" alt="Paris">
+        <h3>Paris</h3>
+        <button class="visit-btn" onclick="openForm()">Visit Now</button>
       </div>
-      <div class="country" onclick="showInfo('France')">
-        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="France">
-        <div class="country-name">France 🇫🇷</div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/New_York_City_at_night_HDR.jpg" alt="New York">
+        <h3>New York</h3>
+        <button class="visit-btn" onclick="openForm()">Visit Now</button>
       </div>
-      <div class="country" onclick="showInfo('India')">
-        <img src="https://images.unsplash.com/photo-1587223962930-5b0a4d7d9bfb" alt="India">
-        <div class="country-name">India 🇮🇳</div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tokyo_Montage_2015.jpg" alt="Tokyo">
+        <h3>Tokyo</h3>
+        <button class="visit-btn" onclick="openForm()">Visit Now</button>
       </div>
-      <div class="country" onclick="showInfo('Italy')">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Italy">
-        <div class="country-name">Italy 🇮🇹</div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Dubai_Skyline_2020.jpg" alt="Dubai">
+        <h3>Dubai</h3>
+        <button class="visit-btn" onclick="openForm()">Visit Now</button>
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/London_Skyline.jpg" alt="London">
+        <h3>London</h3>
+        <button class="visit-btn" onclick="openForm()">Visit Now</button>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="info">
-    <h2 id="countryName"></h2>
-    <p id="countryDesc"></p>
-    <button onclick="visitNow()">Visit Now</button>
-  </section>
+  <!-- Registration Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>Register for Your Trip</h2>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <input type="text" placeholder="Destination">
+      <button onclick="confirmBooking()">Submit</button>
+      <button onclick="closeForm()">Close</button>
+    </div>
+  </div>
 
-  <section id="register">
-    <h2>Register Your Trip 🌟</h2>
-    <form onsubmit="confirmBooking(event)">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="email" id="email" placeholder="Email Address" required>
-      <select id="destination" required>
-        <option value="">Select Destination</option>
-        <option>Japan</option>
-        <option>France</option>
-        <option>India</option>
-        <option>Italy</option>
-      </select>
-      <input type="date" id="date" required>
-      <button type="submit" class="submit">Confirm Visit</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© 2025 World Travel Explorer | Created by Khushi 💖</p>
-  </footer>
+  <footer>© 2025 World Explorer | Designed by Khushi 💖</footer>
 
   <script>
-    function showSection(sec) {
-      document.getElementById("home").style.display = sec === "home" ? "block" : "none";
-      document.getElementById("countries").style.display = sec === "countries" ? "block" : "none";
-      document.getElementById("info").style.display = "none";
-      document.getElementById("register").style.display = "none";
+    const popup = document.getElementById("popup");
+
+    function openForm() {
+      popup.style.display = "flex";
     }
 
-    showSection("home");
-
-    function showInfo(country) {
-      const info = {
-        Japan: "Japan is famous for its cherry blossoms, Mount Fuji, and rich culture blending technology with tradition.",
-        France: "France is known for the Eiffel Tower, romantic Paris, delicious cuisine, and stunning countryside.",
-        India: "India offers colorful festivals, historic temples, the Taj Mahal, and a variety of traditions across its states.",
-        Italy: "Italy is the land of art, fashion, pasta, and architecture — from Venice canals to Roman ruins."
-      };
-      document.getElementById("countries").style.display = "none";
-      document.getElementById("info").style.display = "block";
-      document.getElementById("countryName").innerText = country;
-      document.getElementById("countryDesc").innerText = info[country];
-      document.getElementById("destination").value = country;
+    function closeForm() {
+      popup.style.display = "none";
     }
 
-    function visitNow() {
-      document.getElementById("info").style.display = "none";
-      document.getElementById("register").style.display = "block";
-    }
-
-    function confirmBooking(e) {
-      e.preventDefault();
-      alert("🎉 Your visit is confirmed! Have a great journey ✈️");
-      document.querySelector("form").reset();
-      showSection("home");
+    function confirmBooking() {
+      alert("🎉 Your trip is confirmed! Thank you for booking with us.");
+      closeForm();
     }
   </script>
-
 </body>
 </html>
