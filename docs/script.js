@@ -45,3 +45,14 @@ function submitForm() {
   document.getElementById("registerForm").reset();
   return false;
 }
+// Display bookings in real-time
+const bookingList = document.getElementById("bookingList");
+
+bookingDB.on("child_added", function(snapshot) {
+  const data = snapshot.val();
+  const div = document.createElement("div");
+  div.classList.add("bookingItem");
+  div.innerHTML = `<strong>Name:</strong> ${data.name} <br> <strong>Email:</strong> ${data.email} <br> <strong>City:</strong> ${data.city} <br> <strong>Tickets:</strong> ${data.tickets} <br> <strong>Date:</strong> ${data.date}`;
+  bookingList.prepend(div); // newest booking top pe show ho
+});
+
