@@ -3,35 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dream Destination – Book Your Trip</title>
+  <title>World Travel Explorer 🌍</title>
   <style>
     * {
       margin: 0; padding: 0;
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body { background-color: #f7f9fb; color: #333; }
+    body {
+      background-color: #f6f8fa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
 
-    /* Header */
     header {
       background: linear-gradient(90deg, #0077b6, #00b4d8);
       color: white;
       text-align: center;
-      padding: 15px 0;
+      padding: 20px 0;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
-    header h1 { margin-bottom: 8px; }
+
     nav a {
       text-decoration: none;
       color: white;
       margin: 0 12px;
       font-weight: 600;
       padding: 6px 12px;
-      border-radius: 6px;
+      border-radius: 8px;
       transition: 0.3s;
     }
     nav a:hover {
@@ -39,10 +41,10 @@
       color: #0077b6;
     }
 
-    /* Hero (Home Page) */
+    /* Home Section */
     .hero {
       background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover;
-      height: 85vh;
+      height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,97 +58,114 @@
       inset: 0;
       background: rgba(0,0,0,0.4);
     }
-    .hero h2 {
-      font-size: 3em;
+    .hero h1 {
       z-index: 1;
       position: relative;
+      font-size: 3em;
     }
 
-    /* Gallery */
-    #gallery {
+    /* Country Grid */
+    #countries {
       padding: 60px 20px;
       text-align: center;
     }
-    #gallery h2 { margin-bottom: 25px; color: #0077b6; }
-    .places {
+    #countries h2 {
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 25px;
     }
-    .place {
+    .country {
       position: relative;
       overflow: hidden;
       border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
     }
-    .place img {
+    .country img {
       width: 100%;
       height: 220px;
       object-fit: cover;
-      transition: 0.4s;
-    }
-    .place:hover img {
-      transform: scale(1.1);
-      filter: brightness(0.6);
-    }
-    .book-btn {
-      position: absolute;
-      bottom: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #00b4d8;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
       transition: 0.3s;
     }
-    .place:hover .book-btn {
-      bottom: 20px;
+    .country:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.7);
     }
-    .book-btn:hover {
-      background: #023e8a;
+    .country-name {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      color: white;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 0;
+      font-size: 1.2em;
+      font-weight: bold;
     }
 
-    /* Contact (Booking Form) */
-    #contact {
+    /* Info Section */
+    #info {
       display: none;
       padding: 60px 20px;
+      background: linear-gradient(90deg, #00b4d8, #48cae4);
+      color: white;
       text-align: center;
-      background: linear-gradient(90deg, #0096c7, #00b4d8);
+    }
+    #info h2 { margin-bottom: 10px; }
+    #info p { max-width: 700px; margin: 0 auto 20px; }
+    #info button {
+      background: white;
+      color: #0077b6;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #info button:hover {
+      background: #023e8a;
       color: white;
     }
+
+    /* Register Form */
+    #register {
+      display: none;
+      padding: 60px 20px;
+      background: #f1f5f9;
+      text-align: center;
+    }
     form {
-      max-width: 500px;
-      margin: 20px auto;
+      max-width: 400px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-    input, textarea, select {
+    input, select {
       padding: 10px;
-      border: none;
       border-radius: 8px;
+      border: 1px solid #ccc;
       font-size: 1em;
     }
-    button {
-      padding: 10px;
+    button.submit {
+      background: #0077b6;
+      color: white;
+      font-weight: bold;
       border: none;
       border-radius: 8px;
-      background: white;
-      color: #0077b6;
-      font-weight: bold;
-      cursor: pointer;
+      padding: 10px;
       transition: 0.3s;
     }
-    button:hover {
+    button.submit:hover {
       background: #023e8a;
-      color: white;
     }
 
-    /* Footer */
     footer {
       background: #023e8a;
       color: white;
@@ -157,87 +176,103 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header>
-    <h1>Dream Destination ✈️</h1>
+    <h1>World Travel Explorer 🌏</h1>
     <nav>
       <a href="#home" onclick="showSection('home')">Home</a>
-      <a href="#gallery" onclick="showSection('gallery')">Places</a>
-      <a href="#contact" onclick="showSection('contact')">Contact</a>
+      <a href="#countries" onclick="showSection('countries')">Countries</a>
     </nav>
   </header>
 
-  <!-- Home -->
   <section class="hero" id="home">
-    <h2>Discover Your Next Adventure 🌍</h2>
+    <h1>Explore Beautiful Countries Around the World ✈️</h1>
   </section>
 
-  <!-- Gallery -->
-  <section id="gallery">
-    <h2>Popular Travel Spots</h2>
-    <div class="places">
-      <div class="place">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
-        <button class="book-btn" onclick="bookNow('Beach Paradise')">Book Now</button>
+  <section id="countries">
+    <h2>Choose Your Next Destination</h2>
+    <div class="grid">
+      <div class="country" onclick="showInfo('Japan')">
+        <img src="https://images.unsplash.com/photo-1558981359-219d6364c9b3" alt="Japan">
+        <div class="country-name">Japan 🇯🇵</div>
       </div>
-      <div class="place">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Mountains">
-        <button class="book-btn" onclick="bookNow('Mountain View')">Book Now</button>
+      <div class="country" onclick="showInfo('France')">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="France">
+        <div class="country-name">France 🇫🇷</div>
       </div>
-      <div class="place">
-        <img src="https://images.unsplash.com/photo-1519821172141-b5d8e7f8bc55" alt="City">
-        <button class="book-btn" onclick="bookNow('City Lights')">Book Now</button>
+      <div class="country" onclick="showInfo('India')">
+        <img src="https://images.unsplash.com/photo-1587223962930-5b0a4d7d9bfb" alt="India">
+        <div class="country-name">India 🇮🇳</div>
       </div>
-      <div class="place">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Desert">
-        <button class="book-btn" onclick="bookNow('Desert Safari')">Book Now</button>
+      <div class="country" onclick="showInfo('Italy')">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Italy">
+        <div class="country-name">Italy 🇮🇹</div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form -->
-  <section id="contact">
-    <h2>Book Your Journey 💌</h2>
+  <section id="info">
+    <h2 id="countryName"></h2>
+    <p id="countryDesc"></p>
+    <button onclick="visitNow()">Visit Now</button>
+  </section>
+
+  <section id="register">
+    <h2>Register Your Trip 🌟</h2>
     <form onsubmit="confirmBooking(event)">
-      <input type="text" id="name" placeholder="Your Full Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
       <select id="destination" required>
         <option value="">Select Destination</option>
-        <option>Beach Paradise</option>
-        <option>Mountain View</option>
-        <option>City Lights</option>
-        <option>Desert Safari</option>
+        <option>Japan</option>
+        <option>France</option>
+        <option>India</option>
+        <option>Italy</option>
       </select>
-      <textarea id="message" rows="4" placeholder="Your Message"></textarea>
-      <button type="submit">Confirm Booking</button>
+      <input type="date" id="date" required>
+      <button type="submit" class="submit">Confirm Visit</button>
     </form>
   </section>
 
   <footer>
-    <p>© 2025 Dream Destination | Designed by Khushi 💖</p>
+    <p>© 2025 World Travel Explorer | Created by Khushi 💖</p>
   </footer>
 
   <script>
-    function showSection(section) {
-      document.getElementById("home").style.display = section === "home" ? "block" : "none";
-      document.getElementById("gallery").style.display = section === "gallery" ? "block" : "none";
-      document.getElementById("contact").style.display = section === "contact" ? "block" : "none";
+    function showSection(sec) {
+      document.getElementById("home").style.display = sec === "home" ? "block" : "none";
+      document.getElementById("countries").style.display = sec === "countries" ? "block" : "none";
+      document.getElementById("info").style.display = "none";
+      document.getElementById("register").style.display = "none";
     }
 
-    // default show home
     showSection("home");
 
-    function bookNow(place) {
-      showSection("contact");
-      document.getElementById("destination").value = place;
+    function showInfo(country) {
+      const info = {
+        Japan: "Japan is famous for its cherry blossoms, Mount Fuji, and rich culture blending technology with tradition.",
+        France: "France is known for the Eiffel Tower, romantic Paris, delicious cuisine, and stunning countryside.",
+        India: "India offers colorful festivals, historic temples, the Taj Mahal, and a variety of traditions across its states.",
+        Italy: "Italy is the land of art, fashion, pasta, and architecture — from Venice canals to Roman ruins."
+      };
+      document.getElementById("countries").style.display = "none";
+      document.getElementById("info").style.display = "block";
+      document.getElementById("countryName").innerText = country;
+      document.getElementById("countryDesc").innerText = info[country];
+      document.getElementById("destination").value = country;
     }
 
-    function confirmBooking(event) {
-      event.preventDefault();
-      alert("🎉 Your ticket is confirmed! Thank you for booking with Dream Destination 💖");
+    function visitNow() {
+      document.getElementById("info").style.display = "none";
+      document.getElementById("register").style.display = "block";
+    }
+
+    function confirmBooking(e) {
+      e.preventDefault();
+      alert("🎉 Your visit is confirmed! Have a great journey ✈️");
       document.querySelector("form").reset();
       showSection("home");
     }
   </script>
+
 </body>
 </html>
