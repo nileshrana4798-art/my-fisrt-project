@@ -1,27 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khushi’s Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Destination - Explore the World</title>
   <style>
     body {
-      background-color: #ffe4f2;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    header {
+      background-color: #0077b6;
+      color: white;
+      padding: 20px 0;
       text-align: center;
-      font-family: Arial, sans-serif;
-      padding-top: 100px;
     }
-    h1 {
-      color: #e91e63;
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
     }
-    p {
-      color: #555;
-      font-size: 20px;
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3em;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    footer {
+      background-color: #023e8a;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Khushi’s Website 💖</h1>
-  <p>This website is live on GitHub Pages!</p>
+
+  <header>
+    <h1>Dream Destination</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Explore the World with Us 🌴</h1>
+  </div>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Welcome to Dream Destination! We help you find the best travel spots across the world — from beaches to mountains, cities to deserts — your perfect vacation awaits!</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Mountains">
+      <img src="https://images.unsplash.com/photo-1519821172141-b5d8e7f8bc55" alt="City">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Desert">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: dream@destination.com | Phone: +91 98765 43210</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Dream Destination | Designed by Khushi ❤️</p>
+  </footer>
+
 </body>
 </html>
