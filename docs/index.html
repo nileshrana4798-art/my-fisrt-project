@@ -25,7 +25,6 @@
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
       <p>Discover your next adventure with World Journey</p>
-      <button class="btn" onclick="openForm('Any City')">Visit Now</button>
     </div>
   </section>
 
@@ -38,7 +37,6 @@
           <h3>Paris</h3>
           <p>The city of love and lights, full of romance and art.</p>
           <button class="btn" onclick="openForm('Paris')">Visit Now</button>
-          <button class="btn" onclick="openForm('Paris')">Book Ticket</button>
         </div>
       </div>
 
@@ -47,7 +45,6 @@
           <h3>Tokyo</h3>
           <p>Experience the future with Japan’s rich culture.</p>
           <button class="btn" onclick="openForm('Tokyo')">Visit Now</button>
-          <button class="btn" onclick="openForm('Tokyo')">Book Ticket</button>
         </div>
       </div>
 
@@ -56,7 +53,6 @@
           <h3>Dubai</h3>
           <p>Luxury and innovation in the desert city of dreams.</p>
           <button class="btn" onclick="openForm('Dubai')">Visit Now</button>
-          <button class="btn" onclick="openForm('Dubai')">Book Ticket</button>
         </div>
       </div>
 
@@ -65,7 +61,6 @@
           <h3>New York</h3>
           <p>The city that never sleeps, where dreams come true.</p>
           <button class="btn" onclick="openForm('New York')">Visit Now</button>
-          <button class="btn" onclick="openForm('New York')">Book Ticket</button>
         </div>
       </div>
     </div>
@@ -81,8 +76,14 @@
         <input type="text" required>
         <label>Email Address</label>
         <input type="email" required>
-        <label>Selected City</label>
-        <input type="text" id="selectedCity" readonly>
+        <label>Select City</label>
+        <select id="selectedCity" required>
+          <option value="">-- Select City --</option>
+          <option value="Paris">Paris</option>
+          <option value="Tokyo">Tokyo</option>
+          <option value="Dubai">Dubai</option>
+          <option value="New York">New York</option>
+        </select>
         <label>Number of Tickets</label>
         <input type="number" min="1" max="10" required>
         <label>Travel Date</label>
@@ -92,12 +93,10 @@
     </div>
   </div>
 
-  <!-- Bookings Display -->
-  <section id="bookings" class="bookings">
-    <h2>All Bookings</h2>
-    <div id="bookingList">
-      <!-- Bookings display yahan honge -->
-    </div>
+  <!-- Admin Bookings (Hidden for Users) -->
+  <section id="bookings" class="bookings" style="display:none;">
+    <h2>All Bookings (Admin Only)</h2>
+    <div id="bookingList"></div>
   </section>
 
   <!-- About -->
@@ -130,14 +129,6 @@
   <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <!-- Firebase Scripts -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-<!-- Your JS Script -->
-<script src="script.js"></script>
-
-  <!-- JS Script -->
   <script src="script.js"></script>
 </body>
 </html>
