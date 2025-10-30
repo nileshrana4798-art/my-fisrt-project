@@ -1,1 +1,37 @@
+.sale-section {
+  background: #fff0f5;
+  padding: 40px 20px;
+  border-top: 3px solid #ff80ab;
+  border-bottom: 3px solid #ff80ab;
+  margin-top: 50px;
+}
+
+.sale-section h2 {
+  color: #e91e63;
+  font-size: 2rem;
+}
+
+.plans {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 200px;
+}
+
+.plan-card h3 {
+  color: #ff4081;
+}
+
+button {
+  margin-top: 20px;
+}
 
