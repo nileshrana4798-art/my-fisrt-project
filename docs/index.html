@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>World Journey</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Poppins & Lato -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Lato:400,700&display=swap" rel="stylesheet">
   <!-- Font Awesome for Social Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -30,9 +30,9 @@
   <section id="home" class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Explore the World <span>with Ease & Style</span></h1>
-      <p>Your journey starts here. Discover, book, and travel with World Journey.</p>
-      <a href="#destinations" class="hero-btn">View Destinations</a>
+      <h1>World Journey</h1>
+      <p class="hero-tagline">Explore the World with Us</p>
+      <a href="#destinations" class="hero-btn">Start Exploring</a>
     </div>
   </section>
 
@@ -40,13 +40,13 @@
   <section id="destinations" class="destinations container">
     <h2 class="section-title">Top Destinations</h2>
     <div class="destinations-grid">
-      <!-- Repeat for each city -->
+      <!-- City Card: Paris -->
       <div class="destination-card" data-city="Paris">
         <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80');">
           <div class="card-overlay"></div>
           <h3 class="city-name">Paris</h3>
           <div class="card-desc">
-            <p>The City of Light, famed for its art, fashion, gastronomy, and culture. Wander through the romantic streets and enjoy breathtaking landmarks.</p>
+            <p>The City of Light, famous for romance, art, and beautiful streets. Enjoy the Eiffel Tower and world-class cuisine.</p>
             <div class="card-actions">
               <button class="visit-btn">Visit Us</button>
               <button class="book-btn">Book Ticket</button>
@@ -54,25 +54,13 @@
           </div>
         </div>
       </div>
-      <div class="destination-card" data-city="London">
-        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=700&q=80');">
-          <div class="card-overlay"></div>
-          <h3 class="city-name">London</h3>
-          <div class="card-desc">
-            <p>Experience historical grandeur, modern attractions, and vibrant nightlife in this iconic British capital. Explore museums, palaces, and parks.</p>
-            <div class="card-actions">
-              <button class="visit-btn">Visit Us</button>
-              <button class="book-btn">Book Ticket</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- City Card: Tokyo -->
       <div class="destination-card" data-city="Tokyo">
         <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80');">
           <div class="card-overlay"></div>
           <h3 class="city-name">Tokyo</h3>
           <div class="card-desc">
-            <p>Immerse yourself in a city where tradition meets the future. Savor world-class cuisine, serene temples, and dazzling cityscapes.</p>
+            <p>Experience the blend of tradition and modernity, world-class food, neon streets, and serene temples.</p>
             <div class="card-actions">
               <button class="visit-btn">Visit Us</button>
               <button class="book-btn">Book Ticket</button>
@@ -80,12 +68,13 @@
           </div>
         </div>
       </div>
+      <!-- City Card: Dubai -->
       <div class="destination-card" data-city="Dubai">
         <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80');">
           <div class="card-overlay"></div>
           <h3 class="city-name">Dubai</h3>
           <div class="card-desc">
-            <p>Discover luxury and innovation in the heart of the Middle East. Marvel at skyscrapers, golden deserts, and opulent shopping malls.</p>
+            <p>Luxury and futuristic architecture, golden deserts, and endless shopping await you in Dubai.</p>
             <div class="card-actions">
               <button class="visit-btn">Visit Us</button>
               <button class="book-btn">Book Ticket</button>
@@ -93,12 +82,13 @@
           </div>
         </div>
       </div>
+      <!-- City Card: New York -->
       <div class="destination-card" data-city="New York">
         <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80');">
           <div class="card-overlay"></div>
           <h3 class="city-name">New York</h3>
           <div class="card-desc">
-            <p>The city that never sleeps. Enjoy Broadway, skyscrapers, diverse neighborhoods, and world-class dining in the Big Apple.</p>
+            <p>The city that never sleeps. Broadway, skyscrapers, and vibrant neighborhoods for every traveler.</p>
             <div class="card-actions">
               <button class="visit-btn">Visit Us</button>
               <button class="book-btn">Book Ticket</button>
@@ -106,12 +96,27 @@
           </div>
         </div>
       </div>
+      <!-- City Card: London -->
+      <div class="destination-card" data-city="London">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">London</h3>
+          <div class="card-desc">
+            <p>Historic palaces, vibrant culture, and beautiful parks: London has something for everyone.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- City Card: Bali -->
       <div class="destination-card" data-city="Bali">
         <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80');">
           <div class="card-overlay"></div>
           <h3 class="city-name">Bali</h3>
           <div class="card-desc">
-            <p>Escape to tropical paradise. Bask on pristine beaches, explore lush jungles, and embrace the spiritual culture of Bali.</p>
+            <p>Relax on pristine beaches, explore lush jungles, and immerse in Bali’s spiritual culture.</p>
             <div class="card-actions">
               <button class="visit-btn">Visit Us</button>
               <button class="book-btn">Book Ticket</button>
@@ -119,12 +124,13 @@
           </div>
         </div>
       </div>
+      <!-- City Card: Rome -->
       <div class="destination-card" data-city="Rome">
         <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=700&q=80');">
           <div class="card-overlay"></div>
           <h3 class="city-name">Rome</h3>
           <div class="card-desc">
-            <p>The Eternal City welcomes you to magnificent ruins, art, and culinary delights. Walk in the footsteps of emperors and artists.</p>
+            <p>The Eternal City: magnificent ruins, art, and cuisine. Walk in the footsteps of emperors and artists.</p>
             <div class="card-actions">
               <button class="visit-btn">Visit Us</button>
               <button class="book-btn">Book Ticket</button>
@@ -146,7 +152,7 @@
           <input type="text" id="fullName" name="fullName" required>
         </div>
         <div class="form-group">
-          <label for="email">Email Address</label>
+          <label for="email">Email</label>
           <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
@@ -172,7 +178,7 @@
     <div class="about-content container">
       <h2 class="section-title">About World Journey</h2>
       <p>
-        At World Journey, our mission is to make global exploration effortless and affordable for everyone. We believe travel broadens horizons, sparks joy, and creates unforgettable memories. Our team is dedicated to curating the best experiences and seamless journeys for travelers worldwide, helping you discover the wonders of our planet with confidence and style.
+        World Journey’s mission is to help travelers explore the world effortlessly, from iconic cities to hidden gems. We make travel inspiring, easy, and memorable for everyone.
       </p>
     </div>
   </section>
