@@ -2,7 +2,7 @@
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "world-journey-db.firebaseapp.com",
-  databaseURL: "https://world-journey-db-default-rtdb.firebaseio.com",
+  databaseURL: "https://world-jouney-db-default-rtdb.firebaseio.com",
   projectId: "world-journey-db",
   storageBucket: "world-journey-db.appspot.com",
   messagingSenderId: "YOUR_ID",
