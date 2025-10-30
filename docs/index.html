@@ -120,5 +120,45 @@
   </footer>
 
   <script src="script.js"></script>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBQcex7SCBZVv8UBLfvwzSfRTO_5PiaSBk",
+    authDomain: "world-journey-db.firebaseapp.com",
+    projectId: "world-journey-db",
+    storageBucket: "world-journey-db.firebasestorage.app",
+    messagingSenderId: "1049506976154",
+    appId: "1:1049506976154:web:afc2646b88a416c6352a23",
+    measurementId: "G-4J3X3M9C5G"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Form submit hone par data Firebase me bhejna
+  document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+
+    set(ref(db, 'users/' + name), {
+      username: name,
+      email: email
+    })
+    .then(() => {
+      document.getElementById("message").innerText = "🎉 Your order is confirmed!";
+      document.getElementById("signupForm").reset();
+
+    })
+    .catch((error) => {
+      document.getElementById("message").innerText = "❌ Something went wrong!";
+      console.log(error);
+    });
+  });
+</script>
+
 </body>
 </html>
