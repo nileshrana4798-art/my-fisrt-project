@@ -1,157 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Travel Explorer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/3227a40fae.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Journey</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
   <header class="header">
-    <nav class="nav">
-      <div class="logo">Travel Explorer</div>
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#destinations" class="nav-link">Destinations</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
-    </nav>
+    <div class="container header-content">
+      <div class="logo">World Journey</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#destinations" class="nav-link">Destinations</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Travel Explorer</h1>
-      <p class="tagline">Discover your next adventure</p>
-      <a href="#destinations" class="hero-btn">Start Exploring</a>
+      <h1>Explore the World <span>with Ease & Style</span></h1>
+      <p>Your journey starts here. Discover, book, and travel with World Journey.</p>
+      <a href="#destinations" class="hero-btn">View Destinations</a>
     </div>
   </section>
 
   <!-- Destinations Section -->
-  <section id="destinations" class="destinations">
+  <section id="destinations" class="destinations container">
     <h2 class="section-title">Top Destinations</h2>
     <div class="destinations-grid">
-      <!-- Destination Cards -->
-      <div class="destination-card" data-name="Paris">
-        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris" />
-        <div class="card-overlay">
-          <span class="destination-name">Paris</span>
-        </div>
-      </div>
-      <div class="destination-card" data-name="Tokyo">
-        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="Tokyo" />
-        <div class="card-overlay">
-          <span class="destination-name">Tokyo</span>
-        </div>
-      </div>
-      <div class="destination-card" data-name="Dubai">
-        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=800&q=80" alt="Dubai" />
-        <div class="card-overlay">
-          <span class="destination-name">Dubai</span>
-        </div>
-      </div>
-      <div class="destination-card" data-name="New York">
-        <img src="https://images.unsplash.com/photo-1468436139062-f60a71c5c892?auto=format&fit=crop&w=800&q=80" alt="New York" />
-        <div class="card-overlay">
-          <span class="destination-name">New York</span>
-        </div>
-      </div>
-      <div class="destination-card" data-name="London">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="London" />
-        <div class="card-overlay">
-          <span class="destination-name">London</span>
-        </div>
-      </div>
-      <div class="destination-card" data-name="Bali">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Bali" />
-        <div class="card-overlay">
-          <span class="destination-name">Bali</span>
-        </div>
-      </div>
-    </div>
-    <!-- Destination Modal -->
-    <div id="destination-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal" id="close-modal">&times;</span>
-        <h3 id="modal-destination-name"></h3>
-        <p id="modal-destination-desc"></p>
-        <button id="visit-now-btn" class="visit-now-btn">Visit Now</button>
-      </div>
-    </div>
-    <!-- Registration Pop-up Form -->
-    <div id="registration-popup" class="popup">
-      <div class="popup-content">
-        <span class="close-popup" id="close-popup">&times;</span>
-        <h3>Book Your Tickets</h3>
-        <form id="registration-form">
-          <div class="form-group">
-            <label for="reg-name">Name</label>
-            <input type="text" id="reg-name" name="name" required />
+      <!-- Repeat for each city -->
+      <div class="destination-card" data-city="Paris">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">Paris</h3>
+          <div class="card-desc">
+            <p>The City of Light, famed for its art, fashion, gastronomy, and culture. Wander through the romantic streets and enjoy breathtaking landmarks.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="reg-email">Email</label>
-            <input type="email" id="reg-email" name="email" required />
+        </div>
+      </div>
+      <div class="destination-card" data-city="London">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">London</h3>
+          <div class="card-desc">
+            <p>Experience historical grandeur, modern attractions, and vibrant nightlife in this iconic British capital. Explore museums, palaces, and parks.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="reg-destination">Destination</label>
-            <input type="text" id="reg-destination" name="destination" readonly />
+        </div>
+      </div>
+      <div class="destination-card" data-city="Tokyo">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">Tokyo</h3>
+          <div class="card-desc">
+            <p>Immerse yourself in a city where tradition meets the future. Savor world-class cuisine, serene temples, and dazzling cityscapes.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="reg-tickets">Tickets</label>
-            <input type="number" id="reg-tickets" name="tickets" min="1" max="10" required />
+        </div>
+      </div>
+      <div class="destination-card" data-city="Dubai">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">Dubai</h3>
+          <div class="card-desc">
+            <p>Discover luxury and innovation in the heart of the Middle East. Marvel at skyscrapers, golden deserts, and opulent shopping malls.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="reg-date">Date</label>
-            <input type="date" id="reg-date" name="date" required />
+        </div>
+      </div>
+      <div class="destination-card" data-city="New York">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">New York</h3>
+          <div class="card-desc">
+            <p>The city that never sleeps. Enjoy Broadway, skyscrapers, diverse neighborhoods, and world-class dining in the Big Apple.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
           </div>
-          <button type="submit" class="form-btn">Confirm Booking</button>
-        </form>
+        </div>
+      </div>
+      <div class="destination-card" data-city="Bali">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">Bali</h3>
+          <div class="card-desc">
+            <p>Escape to tropical paradise. Bask on pristine beaches, explore lush jungles, and embrace the spiritual culture of Bali.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="destination-card" data-city="Rome">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=700&q=80');">
+          <div class="card-overlay"></div>
+          <h3 class="city-name">Rome</h3>
+          <div class="card-desc">
+            <p>The Eternal City welcomes you to magnificent ruins, art, and culinary delights. Walk in the footsteps of emperors and artists.</p>
+            <div class="card-actions">
+              <button class="visit-btn">Visit Us</button>
+              <button class="book-btn">Book Ticket</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Registration Popup Form -->
+  <div class="popup-bg" id="popup-bg">
+    <div class="popup-form" id="popup-form">
+      <span class="popup-close" id="popup-close">&times;</span>
+      <h2>Book Your Ticket</h2>
+      <form id="booking-form">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="selectedCity">Selected City</label>
+          <input type="text" id="selectedCity" name="selectedCity" readonly>
+        </div>
+        <div class="form-group">
+          <label for="tickets">Number of Tickets</label>
+          <input type="number" min="1" max="10" id="tickets" name="tickets" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Travel Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
   <!-- About Section -->
-  <section id="about" class="about">
-    <h2 class="section-title">About Travel Explorer</h2>
-    <p>
-      Travel Explorer is your gateway to discovering the world’s most beautiful destinations.
-      Our mission is to inspire, guide, and make your travel dreams a reality with a seamless and premium booking experience.
-    </p>
+  <section id="about" class="about-section">
+    <div class="about-overlay"></div>
+    <div class="about-content container">
+      <h2 class="section-title">About World Journey</h2>
+      <p>
+        At World Journey, our mission is to make global exploration effortless and affordable for everyone. We believe travel broadens horizons, sparks joy, and creates unforgettable memories. Our team is dedicated to curating the best experiences and seamless journeys for travelers worldwide, helping you discover the wonders of our planet with confidence and style.
+      </p>
+    </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact-section container">
     <h2 class="section-title">Contact Us</h2>
     <form id="contact-form" class="contact-form">
       <div class="form-group">
-        <label for="contact-name">Name</label>
-        <input type="text" id="contact-name" name="name" required />
+        <label for="contactName">Name</label>
+        <input type="text" id="contactName" name="contactName" required>
       </div>
       <div class="form-group">
-        <label for="contact-email">Email</label>
-        <input type="email" id="contact-email" name="email" required />
+        <label for="contactEmail">Email</label>
+        <input type="email" id="contactEmail" name="contactEmail" required>
       </div>
       <div class="form-group">
-        <label for="contact-message">Message</label>
-        <textarea id="contact-message" name="message" rows="4" required></textarea>
+        <label for="contactMessage">Message</label>
+        <textarea id="contactMessage" name="contactMessage" required></textarea>
       </div>
-      <button type="submit" class="form-btn">Send Message</button>
+      <button type="submit" class="submit-btn">Send Message</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <span>&copy; 2025 Travel Explorer</span>
+    <div class="container footer-content">
       <div class="social-icons">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="footer-text">
+        © 2025 World Journey | Designed by Khushi
       </div>
     </div>
   </footer>
