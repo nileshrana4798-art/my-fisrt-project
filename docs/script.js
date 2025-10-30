@@ -1,17 +1,3 @@
-function openForm(city) {
-  document.getElementById("popupForm").style.display = "flex";
-  document.getElementById("selectedCity").value = city;
-}
-
-function closeForm() {
-  document.getElementById("popupForm").style.display = "none";
-}
-
-function submitForm() {
-  alert("🎉 Your order is confirmed! Have a great journey.");
-  closeForm();
-  return false;
-}
 // Firebase Config
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -23,29 +9,30 @@ const firebaseConfig = {
   appId: "YOUR_APP_ID"
 };
 
-// Firebase start
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const contactDB = firebase.database().ref("bookings");
+const bookingDB = firebase.database().ref("bookings");
 
-// Open aur Close form
+// Open popup
 function openForm(city) {
   document.getElementById("popupForm").style.display = "flex";
   document.getElementById("selectedCity").value = city;
 }
+
+// Close popup
 function closeForm() {
   document.getElementById("popupForm").style.display = "none";
 }
 
-// Data save karna
+// Submit form
 function submitForm() {
-  const name = document.querySelector("input[type='text']").value;
-  const email = document.querySelector("input[type='email']").value;
+  const name = document.querySelector("#registerForm input[type='text']").value;
+  const email = document.querySelector("#registerForm input[type='email']").value;
   const city = document.getElementById("selectedCity").value;
-  const tickets = document.querySelector("input[type='number']").value;
-  const date = document.querySelector("input[type='date']").value;
+  const tickets = document.querySelector("#registerForm input[type='number']").value;
+  const date = document.querySelector("#registerForm input[type='date']").value;
 
-  // Firebase me data save karna
-  contactDB.push({
+  bookingDB.push({
     name: name,
     email: email,
     city: city,
@@ -55,6 +42,6 @@ function submitForm() {
 
   alert("🎉 Your order is confirmed! Have a great journey.");
   closeForm();
+  document.getElementById("registerForm").reset();
   return false;
 }
-
