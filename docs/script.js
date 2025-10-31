@@ -1,26 +1,30 @@
-let selectedCity = '';
-let cityPrice = 0;
-
 function openPopup(city, price) {
-  selectedCity = city;
-  cityPrice = price;
-  document.getElementById('city').value = city;
-  document.getElementById('total').value = `₹${price}`;
-  document.getElementById('popup').style.display = 'flex';
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("city").value = city;
+  document.getElementById("total").value = "₹" + price;
+  document.getElementById("tickets").setAttribute("data-price", price);
 }
 
 function closePopup() {
-  document.getElementById('popup').style.display = 'none';
+  document.getElementById("popup").style.display = "none";
 }
 
-document.getElementById('tickets').addEventListener('input', function () {
-  const tickets = parseInt(this.value);
-  const total = cityPrice * tickets;
-  document.getElementById('total').value = `₹${total}`;
+document.getElementById("tickets").addEventListener("input", function () {
+  let price = this.getAttribute("data-price");
+  let count = this.value;
+  document.getElementById("total").value = "₹" + (price * count);
 });
 
-document.getElementById('bookingForm').addEventListener('submit', function (e) {
+document.getElementById("bookingForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  alert(`🎉 Your order is confirmed!\nEnjoy your trip to ${selectedCity} ✈️`);
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const city = document.getElementById("city").value;
+  const tickets = document.getElementById("tickets").value;
+  const total = document.getElementById("total").value;
+
+  alert(`🎉 Booking Confirmed!\n\nName: ${name}\nCity: ${city}\nTickets: ${tickets}\nTotal: ${total}`);
+
   closePopup();
+  document.getElementById("bookingForm").reset();
 });
