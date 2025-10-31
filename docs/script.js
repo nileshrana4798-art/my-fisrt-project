@@ -1,4 +1,3 @@
-// ✅ Firebase setup
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
@@ -16,17 +15,18 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const bookingDB = ref(db, "bookings");
 
-// ✅ Open & Close popup
+// Open Popup
 window.openForm = function(city) {
   document.getElementById("popupForm").style.display = "flex";
   document.getElementById("selectedCity").value = city;
 };
 
+// Close Popup
 window.closeForm = function() {
   document.getElementById("popupForm").style.display = "none";
 };
 
-// ✅ Submit form
+// Submit Booking
 window.submitForm = function() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -50,7 +50,7 @@ window.submitForm = function() {
   return false;
 };
 
-// ✅ Display bookings (Only Admin — by default)
+// Show all bookings (only for you)
 const bookingList = document.getElementById("bookingList");
 onChildAdded(bookingDB, (snapshot) => {
   const data = snapshot.val();
