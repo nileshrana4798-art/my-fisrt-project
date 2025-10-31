@@ -7,18 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1>World Journey</h1>
     <nav>
       <a href="#home">Home</a>
-      <a href="#destinations">Destinations</a>
+      <a href="#destinations">Plan Your Trip</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- 🏖️ Home Section -->
   <section id="home" class="hero">
     <div class="hero-content">
       <h2>Explore the World With Us</h2>
@@ -27,70 +26,104 @@
     </div>
   </section>
 
-  <!-- Destinations -->
+  <!-- ✈️ Destinations Section -->
   <section id="destinations" class="destinations">
     <h2>Popular Destinations</h2>
     <div class="card-container">
+
+      <!-- Multiple city cards -->
       <div class="card">
         <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Paris" />
         <h3>Paris</h3>
         <p>₹5,000</p>
         <button onclick="openPopup('Paris', 5000)">Book Ticket</button>
       </div>
+
       <div class="card">
         <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="New York" />
         <h3>New York</h3>
         <p>₹7,500</p>
         <button onclick="openPopup('New York', 7500)">Book Ticket</button>
       </div>
+
       <div class="card">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Maldives" />
         <h3>Maldives</h3>
         <p>₹9,000</p>
         <button onclick="openPopup('Maldives', 9000)">Book Ticket</button>
       </div>
+
       <div class="card">
         <img src="https://images.unsplash.com/photo-1549693578-d683be217e58" alt="London" />
         <h3>London</h3>
         <p>₹6,800</p>
         <button onclick="openPopup('London', 6800)">Book Ticket</button>
       </div>
+
       <div class="card">
         <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126" alt="Tokyo" />
         <h3>Tokyo</h3>
         <p>₹8,500</p>
         <button onclick="openPopup('Tokyo', 8500)">Book Ticket</button>
       </div>
+
       <div class="card">
         <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090" alt="Dubai" />
         <h3>Dubai</h3>
         <p>₹6,200</p>
         <button onclick="openPopup('Dubai', 6200)">Book Ticket</button>
       </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Singapore" />
+        <h3>Singapore</h3>
+        <p>₹7,000</p>
+        <button onclick="openPopup('Singapore', 7000)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe" alt="Bali" />
+        <h3>Bali</h3>
+        <p>₹5,800</p>
+        <button onclick="openPopup('Bali', 5800)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526481280691-9062fd49d3f2" alt="Rome" />
+        <h3>Rome</h3>
+        <p>₹6,400</p>
+        <button onclick="openPopup('Rome', 6400)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba" alt="Bangkok" />
+        <h3>Bangkok</h3>
+        <p>₹4,900</p>
+        <button onclick="openPopup('Bangkok', 4900)">Book Ticket</button>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- 🌍 About Section -->
   <section id="about" class="about">
     <div class="about-container">
       <div class="about-text">
         <h2>About Us</h2>
         <p>
-          <strong>World Journey</strong> is your trusted travel companion that helps you explore the world with ease.
-          From the romantic streets of Paris to the beaches of Bali, we bring you closer to your dream destinations with
-          affordable and customized travel experiences.
+          <strong>World Journey</strong> helps you explore the world with ease. From the romantic streets of Paris to the beaches of Bali, we bring you closer to your dream destinations with 
+          affordable and exciting travel experiences.
         </p>
         <p>
-          Our passionate team ensures your trip is safe, exciting, and memorable — every single time.
+          Our travel experts ensure every trip is memorable, comfortable, and perfectly planned — because your adventure deserves the best.
         </p>
       </div>
       <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764b43" alt="About Us Image" />
+        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764b43" alt="About Us" />
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- ✉️ Contact Section -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <p>We’d love to hear from you! Send us your queries or feedback.</p>
@@ -111,12 +144,11 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 World Journey | All Rights Reserved</p>
   </footer>
 
-  <!-- Popup Form -->
+  <!-- Popup -->
   <div id="popup" class="popup">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
@@ -132,6 +164,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
