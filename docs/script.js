@@ -1,12 +1,18 @@
-function scrollToPlanner(city) {
-  const plannerSection = document.getElementById("planner");
-  plannerSection.scrollIntoView({ behavior: "smooth" });
-  if (city) document.getElementById("city").value = city;
+// Open popup with selected city
+function openPopup(cityName) {
+  document.getElementById("popupForm").style.display = "flex";
+  document.getElementById("city").value = cityName || "";
 }
 
-const tripForm = document.getElementById("tripForm");
-tripForm.addEventListener("submit", (e) => {
+// Close popup
+function closePopup() {
+  document.getElementById("popupForm").style.display = "none";
+}
+
+// Handle booking form submit
+document.getElementById("bookingForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  alert("✅ Your order is confirmed! Thank you for planning your trip with us.");
-  tripForm.reset();
+  alert("✅ Your order is confirmed! Thank you for booking with World Journey.");
+  document.getElementById("popupForm").style.display = "none";
+  this.reset();
 });
