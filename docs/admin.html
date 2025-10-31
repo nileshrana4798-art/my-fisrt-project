@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - World Journey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin">
+  <div class="admin-container">
+    <h2>Admin Login</h2>
+    <input type="text" id="adminUser" placeholder="Enter Username">
+    <input type="password" id="adminPass" placeholder="Enter Password">
+    <button class="btn" onclick="adminLogin()">Login</button>
+  </div>
+
+  <div id="adminPanel" style="display:none;">
+    <h2>All Bookings</h2>
+    <table border="1" cellpadding="10">
+      <thead><tr><th>Name</th><th>Email</th><th>City</th><th>Days</th><th>Date</th></tr></thead>
+      <tbody id="bookingData"></tbody>
+    </table>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBQcex7SCBZVv8UBLfvw9m6e1Oqk6R7Pk",
+      authDomain: "world-jouney-db.firebaseapp.com",
+      databaseURL: "https://world-jouney-db-default-rtdb.firebaseio.com/",
+      projectId: "world-jouney-db",
+      storageBucket: "world-jouney-db.appspot.com",
+      messagingSenderId: "895901108796",
+      appId: "1:895901108796:web:baaf91db7d5577bce3e91d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    window.adminLogin = function() {
+      const user = document.getElementById("adminUser").value;
+      const pass = document.getElementById("adminPass").value;
+
+      if (user === "admin" && pass === "12345") {
+        document.querySelector(".admin-container").style.display = "none";
+        document.getElementById("adminPanel").style.display = "block";
+
+        const bookingsRef = ref(db, "bookings");
+        onValue(bookingsRef, (snapshot) => {
+          const data = snapshot.val();
+          const table = document.getElementById("bookingData");
+          table.innerHTML = "";
+          for (let id in data) {
+            const b = data[id];
+            table.innerHTML += `<tr><td>${b.name}</td><td>${b.email}</td><td>${b.city}</td><td>${b.days}</td><td>${b.date}</td></tr>`;
+          }
+        });
+      } else {
+        alert("❌ Wrong username or password!");
+      }
+    };
+  </script>
+</body>
+</html>
