@@ -1,4 +1,4 @@
-// ✅ Firebase Config (apna config yaha daale)
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyBQcex7SCBZVv8UBLfvw0P3B1Yje0HZsr0",
   authDomain: "world-journey-db.firebaseapp.com",
@@ -13,46 +13,40 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const bookingDB = firebase.database().ref("bookings");
 
-// 🧳 Open Form
+// Open Form
 function openForm(city) {
   document.getElementById("popupForm").style.display = "flex";
   document.getElementById("selectedCity").value = city;
 }
 
-// 🧾 Close Form
+// Close Form
 function closeForm() {
   document.getElementById("popupForm").style.display = "none";
 }
 
-// ✅ Submit Form
+// Submit Form
 function submitForm() {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
   const city = document.getElementById("selectedCity").value;
   const tickets = document.getElementById("tickets").value;
   const date = document.getElementById("date").value;
 
-  if (!name || !email || !city || !tickets || !date) {
-    alert("Please fill all fields!");
-    return false;
-  }
-
-  // Data Save to Firebase
   bookingDB.push({
-    name,
-    email,
-    city,
-    tickets,
-    date
+    name: name,
+    email: email,
+    city: city,
+    tickets: tickets,
+    date: date
   });
 
-  alert(`🎉 Your order is confirmed!\n\nName: ${name}\nEmail: ${email}`);
+  alert("🎉 Your order is confirmed!");
   document.getElementById("registerForm").reset();
   closeForm();
   return false;
 }
 
-// 👀 Real-time Booking Display
+// Display All Bookings
 const bookingList = document.getElementById("bookingList");
 
 bookingDB.on("child_added", function(snapshot) {
@@ -60,10 +54,10 @@ bookingDB.on("child_added", function(snapshot) {
   const div = document.createElement("div");
   div.classList.add("bookingItem");
   div.innerHTML = `
-    <strong>Name:</strong> ${data.name} <br>
-    <strong>Email:</strong> ${data.email} <br>
-    <strong>City:</strong> ${data.city} <br>
-    <strong>Tickets:</strong> ${data.tickets} <br>
+    <strong>Name:</strong> ${data.name}<br>
+    <strong>Email:</strong> ${data.email}<br>
+    <strong>City:</strong> ${data.city}<br>
+    <strong>Tickets:</strong> ${data.tickets}<br>
     <strong>Date:</strong> ${data.date}
   `;
   bookingList.prepend(div);
