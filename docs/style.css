@@ -5,7 +5,6 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 body {
   background-color: #fff;
   color: #222;
@@ -24,183 +23,48 @@ header {
   padding: 20px 60px;
   z-index: 1000;
 }
-
-header .logo {
-  font-size: 1.8em;
-  font-weight: bold;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-nav ul li a:hover {
-  color: #ffcd00;
-}
+header .logo { font-size:1.8em; font-weight:bold; }
+nav ul { list-style:none; display:flex; gap:30px; }
+nav ul li a { color:white; text-decoration:none; font-weight:500; transition:0.3s; }
+nav ul li a:hover { color:#ffcd00; }
 
 /* Hero */
 .hero {
   background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center/cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 0 20px;
+  height:100vh;
+  display:flex; justify-content:center; align-items:center; text-align:center; color:white;
 }
-.hero-text h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-}
-.hero-text p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-/* Buttons */
+.hero-text h1 { font-size:3em; margin-bottom:10px; }
+.hero-text p { font-size:1.2em; margin-bottom:20px; }
 .btn {
-  background-color: #ffcd00;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: 0.3s;
-  cursor: pointer;
-  border: none;
+  background-color:#ffcd00; color:black; padding:10px 20px; border-radius:30px; text-decoration:none; transition:0.3s; cursor:pointer;
 }
-.btn:hover {
-  background-color: white;
-  color: black;
-}
+.btn:hover { background-color:white; }
 
 /* Destinations */
-.destinations {
-  padding: 100px 60px;
-  text-align: center;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 40px;
-}
-.card {
-  position: relative;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.card:hover {
-  transform: scale(1.03);
-}
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 20px;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  transition: all 0.3s;
-}
-.overlay h3 { margin-bottom: 10px; }
+.destinations { padding:100px 60px; text-align:center; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:40px; }
+.card { position:relative; height:300px; background-size:cover; background-position:center; border-radius:15px; overflow:hidden; cursor:pointer; transition:transform 0.3s; }
+.card:hover { transform:scale(1.03); }
+.overlay { position:absolute; bottom:0; width:100%; padding:20px; background:rgba(0,0,0,0.6); color:#fff; }
+.overlay h3 { margin-bottom:10px; }
 
 /* Popup Form */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-.form-content {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  width: 350px;
-  max-width: 90%;
-  position: relative;
-  text-align: left;
-}
-.close-btn {
-  position: absolute;
-  right: 15px; top: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-input, select, textarea {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-}
-textarea { resize: vertical; }
-.submit-btn {
-  background: #ffcd00;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  width: 100%;
-}
-.submit-btn:hover {
-  background: #222;
-  color: white;
-}
+.popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:2000; }
+.form-content { background:white; padding:30px; border-radius:15px; width:350px; position:relative; text-align:left; }
+.close-btn { position:absolute; right:15px; top:10px; font-size:24px; cursor:pointer; }
+input, select, textarea { width:100%; margin-bottom:15px; padding:10px; border-radius:8px; border:1px solid #ccc; }
+.submit-btn { background:#ffcd00; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; transition:0.3s; width:100%; }
+.submit-btn:hover { background:#222; color:white; }
 
 /* About / Contact */
-.about, .contact { padding: 100px 60px; text-align: center; }
-.contact form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; }
-.contact button {
-  background: #ffcd00;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-top: 10px;
-}
-.contact button:hover { background: #222; color: white; }
+.about, .contact { padding:100px 60px; text-align:center; }
 
 /* Footer */
-footer { background: rgba(0,0,0,0.8); color: white; text-align: center; padding: 30px; }
-footer .socials a { margin: 0 10px; color: #ffcd00; font-size: 1.2em; text-decoration: none; }
+footer { background:rgba(0,0,0,0.8); color:white; text-align:center; padding:30px; }
+footer .socials a { margin:0 10px; color:#ffcd00; font-size:1.2em; text-decoration:none; }
 
 /* Bookings */
-.bookings { padding: 50px 60px; text-align: center; }
-#bookingList { margin-top: 20px; }
-.booking-item {
-  background: #f5f5f5;
-  padding: 15px 20px;
-  margin: 10px auto;
-  border-radius: 10px;
-  max-width: 500px;
-  text-align: left;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Responsive */
-@media(max-width:768px){
-  header { flex-direction: column; padding: 15px 20px; }
-  nav ul { flex-direction: column; gap: 15px; margin-top: 10px; }
-  .hero-text h1 { font-size: 2em; }
-  .destinations, .about, .contact, .bookings { padding: 60px 20px; }
-}
+.bookings { padding:50px 60px; text-align:center; }
+#bookingList { margin-top:20px; }
+.bookingItem { background:#f5f5f5; padding:15px 20px; margin:10px auto; border-radius:10px; max-width:500px; text-align:left; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
