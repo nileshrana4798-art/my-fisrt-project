@@ -33,32 +33,48 @@ function submitForm() {
   const date = document.querySelector("#registerForm input[type='date']").value;
 
   if (!name || !email || !city || !tickets || !date) {
-    alert("Please fill all fields!");
+    alert("⚠️ Please fill all fields!");
     return false;
   }
 
-  bookingDB.push({
-    name, email, city, tickets, date
-  });
-
+  bookingDB.push({ name, email, city, tickets, date });
   alert("🎉 Your order is confirmed!");
   closeForm();
   document.getElementById("registerForm").reset();
   return false;
 }
 
-// ✅ Show Bookings (Admin Only)
-const bookingList = document.getElementById("bookingList");
-bookingDB.on("child_added", function(snapshot) {
-  const data = snapshot.val();
-  const div = document.createElement("div");
-  div.classList.add("bookingItem");
-  div.innerHTML = `
-    <strong>Name:</strong> ${data.name} <br>
-    <strong>Email:</strong> ${data.email} <br>
-    <strong>City:</strong> ${data.city} <br>
-    <strong>Tickets:</strong> ${data.tickets} <br>
-    <strong>Date:</strong> ${data.date}
-  `;
-  bookingList.prepend(div);
-});
+// ✅ ADMIN LOGIN SYSTEM
+function checkAdminAccess() {
+  const pass = prompt("🔐 Enter Admin Password to View All Bookings:");
+  if (pass === "Khushi@123") {  // <-- Change password if you want
+    document.getElementById("bookings").style.display = "block";
+    loadBookings();
+  } else if (pass !== null) {
+    alert("❌ Wrong Password! Access Denied.");
+  }
+}
+
+// ✅ Load bookings (Only when admin logged in)
+function loadBookings() {
+  const bookingList = document.getElementById("bookingList");
+  bookingList.innerHTML = ""; // clear previous data
+  bookingDB.on("child_added", function(snapshot) {
+    const data = snapshot.val();
+    const div = document.createElement("div");
+    div.classList.add("bookingItem");
+    div.innerHTML = `
+      <strong>Name:</strong> ${data.name} <br>
+      <strong>Email:</strong> ${data.email} <br>
+      <strong>City:</strong> ${data.city} <br>
+      <strong>Tickets:</strong> ${data.tickets} <br>
+      <strong>Date:</strong> ${data.date}
+    `;
+    bookingList.prepend(div);
+  });
+}
+
+// ✅ Hide All Bookings by default
+window.onload = function() {
+  document.getElementById("bookings").style.display = "none";
+};
