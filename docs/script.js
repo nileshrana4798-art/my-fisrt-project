@@ -1,82 +1,50 @@
-// Firebase setup
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "world-journey-db.firebaseapp.com",
-  databaseURL: "https://world-jouney-db-default-rtdb.firebaseio.com",
-  projectId: "world-journey-db",
-  storageBucket: "world-journey-db.appspot.com",
-  messagingSenderId: "YOUR_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBQcex7SCBZVv8UBLfvw9m6e1Oqk6R7Pk",
+  authDomain: "world-jouney-db.firebaseapp.com",
+  databaseURL: "https://world-jouney-db-default-rtdb.firebaseio.com/",
+  projectId: "world-jouney-db",
+  storageBucket: "world-jouney-db.appspot.com",
+  messagingSenderId: "895901108796",
+  appId: "1:895901108796:web:baaf91db7d5577bce3e91d"
 };
-firebase.initializeApp(firebaseConfig);
-const bookingDB = firebase.database().ref("bookings");
 
-// Open Register Form
-function openForm(city) {
-  document.getElementById("popupForm").style.display = "flex";
-  document.getElementById("selectedCity").value = city;
-}
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-// Close Register Form
-function closeForm() {
-  document.getElementById("popupForm").style.display = "none";
-}
+const popupForm = document.getElementById("popupForm");
+const bookingForm = document.getElementById("bookingForm");
 
-// Admin Login
-function openAdmin() {
-  document.getElementById("adminLogin").style.display = "flex";
-}
-function closeAdmin() {
-  document.getElementById("adminLogin").style.display = "none";
-}
+window.openForm = function(cityName) {
+  popupForm.style.display = "block";
+  if (cityName) document.getElementById("city").value = cityName;
+};
 
-// Submit Form
-function submitForm() {
-  const name = document.querySelector("#registerForm input[type='text']").value;
-  const email = document.querySelector("#registerForm input[type='email']").value;
-  const city = document.getElementById("selectedCity").value;
-  const tickets = document.querySelector("#registerForm input[type='number']").value;
-  const date = document.querySelector("#registerForm input[type='date']").value;
+window.closeForm = function() {
+  popupForm.style.display = "none";
+};
 
-  if (!name || !email || !city || !tickets || !date) {
-    alert("⚠️ Please fill all fields!");
-    return false;
-  }
+bookingForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const city = document.getElementById("city").value;
+  const days = document.getElementById("days").value;
 
-  bookingDB.push({ name, email, city, tickets, date });
-  alert("🎉 Your Order is Confirmed!");
-  closeForm();
-  document.getElementById("registerForm").reset();
-  return false;
-}
-
-// Verify Admin Password (only admin sees bookings)
-function verifyAdmin() {
-  const pass = document.getElementById("adminPass").value;
-  if (pass === "Khushi@123") {
-    document.getElementById("bookings").style.display = "block";
-    closeAdmin();
-    loadBookings();
-  } else {
-    alert("❌ Incorrect Password");
-  }
-}
-
-// Load Bookings (only for admin)
-function loadBookings() {
-  const bookingList = document.getElementById("bookingList");
-  bookingList.innerHTML = "";
-  bookingDB.on("child_added", (snap) => {
-    const data = snap.val();
-    const div = document.createElement("div");
-    div.classList.add("bookingItem");
-    div.innerHTML = `
-      <b>Name:</b> ${data.name}<br>
-      <b>Email:</b> ${data.email}<br>
-      <b>City:</b> ${data.city}<br>
-      <b>Tickets:</b> ${data.tickets}<br>
-      <b>Date:</b> ${data.date}
-    `;
-    bookingList.prepend(div);
+  const newBookingRef = push(ref(db, "bookings"));
+  set(newBookingRef, {
+    name,
+    email,
+    city,
+    days,
+    date: new Date().toLocaleString()
+  }).then(() => {
+    alert("✅ Your order is confirmed!");
+    bookingForm.reset();
+    closeForm();
+  }).catch((error) => {
+    alert("❌ Error: " + error);
   });
-}
+});
