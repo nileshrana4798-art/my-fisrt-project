@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <!-- Header -->
   <header>
     <h1>World Journey</h1>
@@ -23,60 +24,58 @@
   <section id="home" class="hero">
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
-      <p>Discover your next adventure with World Journey</p>
-      <button class="btn" onclick="scrollToPlanner()">Plan Your Trip</button>
+      <p>Discover amazing places and make beautiful memories</p>
     </div>
   </section>
 
-  <!-- Destinations -->
+  <!-- Destinations Section -->
   <section class="destinations">
     <h2>Popular Destinations</h2>
     <div class="destination-list">
       <div class="place">
         <img src="tokyo.jpg" alt="Tokyo">
         <h3>Tokyo</h3>
-        <button onclick="scrollToPlanner('Tokyo')">Plan Your Trip</button>
+        <button class="btn" onclick="openPopup('Tokyo')">Visit Now</button>
       </div>
       <div class="place">
         <img src="paris.jpg" alt="Paris">
         <h3>Paris</h3>
-        <button onclick="scrollToPlanner('Paris')">Plan Your Trip</button>
+        <button class="btn" onclick="openPopup('Paris')">Visit Now</button>
       </div>
       <div class="place">
         <img src="maldives.jpg" alt="Maldives">
         <h3>Maldives</h3>
-        <button onclick="scrollToPlanner('Maldives')">Plan Your Trip</button>
+        <button class="btn" onclick="openPopup('Maldives')">Visit Now</button>
       </div>
     </div>
   </section>
 
-  <!-- 🌍 Trip Planner Section -->
-  <section id="planner" class="planner">
-    <div class="overlay">
-      <h2>Plan Your Dream Trip ✈️</h2>
-      <p>Fill out the details below and let us make your journey unforgettable.</p>
-
-      <form id="tripForm" class="trip-form">
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email Address" required>
-        <input type="text" id="city" placeholder="Destination City" required>
-        <input type="number" id="days" placeholder="Number of Days" required>
+  <!-- Popup Form -->
+  <div id="popupForm" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>Book Your Trip</h2>
+      <form id="bookingForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="text" id="city" placeholder="Destination City" required />
+        <input type="number" id="days" placeholder="Number of Days" required />
         <button type="submit" class="btn">Confirm Booking</button>
       </form>
     </div>
-  </section>
+  </div>
 
-  <!-- About -->
+  <!-- About Section -->
   <section id="about" class="about">
     <h2>About Us</h2>
     <p>
-      Welcome to <strong>World Journey</strong> — your trusted travel companion.  
-      We help you create unforgettable memories through personalized trip planning  
-      and expert travel guidance.
+      Welcome to <strong>World Journey</strong> – where dreams meet destinations.  
+      We specialize in creating unforgettable travel experiences around the world.  
+      From tropical beaches to bustling cities, we make your journey truly special.
     </p>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <div class="contact-box">
@@ -86,6 +85,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 World Journey. All Rights Reserved.</p>
   </footer>
