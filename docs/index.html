@@ -34,34 +34,39 @@
   <section id="destinations" class="destinations">
     <h2>Top Destinations</h2>
     <div class="grid">
+
       <div class="card" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34');">
         <div class="overlay">
           <h3>Paris</h3>
-          <p>The city of love and lights, full of romance and art.</p>
+          <p>The city of love and lights.</p>
           <button class="btn" onclick="openForm('Paris')">Visit Now</button>
         </div>
       </div>
+
       <div class="card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');">
         <div class="overlay">
           <h3>Tokyo</h3>
-          <p>Experience the future with Japan’s rich culture.</p>
+          <p>Experience the culture of Japan.</p>
           <button class="btn" onclick="openForm('Tokyo')">Visit Now</button>
         </div>
       </div>
+
       <div class="card" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');">
         <div class="overlay">
           <h3>Dubai</h3>
-          <p>Luxury and innovation in the desert city of dreams.</p>
+          <p>Luxury and innovation in the desert city.</p>
           <button class="btn" onclick="openForm('Dubai')">Visit Now</button>
         </div>
       </div>
+
       <div class="card" style="background-image:url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad');">
         <div class="overlay">
           <h3>New York</h3>
-          <p>The city that never sleeps, where dreams come true.</p>
+          <p>The city that never sleeps.</p>
           <button class="btn" onclick="openForm('New York')">Visit Now</button>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -77,15 +82,8 @@
         <label>Email Address</label>
         <input type="email" placeholder="Enter your email" required>
 
-        <label>Select City</label>
-        <select id="selectedCity" required>
-          <option value="">-- Choose City --</option>
-          <option value="Paris">Paris</option>
-          <option value="Tokyo">Tokyo</option>
-          <option value="Dubai">Dubai</option>
-          <option value="New York">New York</option>
-          <option value="Any City">Any City</option>
-        </select>
+        <label>Selected City</label>
+        <input type="text" id="selectedCity" readonly>
 
         <label>Number of Tickets</label>
         <input type="number" min="1" max="10" required>
@@ -108,7 +106,7 @@
     </div>
   </div>
 
-  <!-- All Bookings (Hidden by default) -->
+  <!-- All Bookings (Hidden to normal users) -->
   <section id="bookings" class="bookings">
     <h2>All Bookings</h2>
     <div id="bookingList"></div>
@@ -117,8 +115,7 @@
   <!-- About -->
   <section id="about" class="about">
     <h2>About World Journey</h2>
-    <p>World Journey inspires travelers to explore beautiful destinations, unique cultures, and unforgettable experiences. 
-    We make your travel smooth, memorable, and affordable.</p>
+    <p>World Journey inspires travelers to explore beautiful destinations and unforgettable experiences.</p>
   </section>
 
   <!-- Contact -->
@@ -141,8 +138,6 @@
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-  <!-- JS -->
   <script src="script.js"></script>
 
 </body>
