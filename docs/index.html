@@ -1,103 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Journey</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Header -->
   <header>
     <h1>World Journey</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <label for="citySelect" class="label">Choose City:</label>
+    <select id="citySelect">
+      <option value="">Any City</option>
+      <option value="Tokyo">Tokyo</option>
+      <option value="Paris">Paris</option>
+      <option value="New York">New York</option>
+      <option value="London">London</option>
+      <option value="Dubai">Dubai</option>
+      <option value="Singapore">Singapore</option>
+      <option value="Sydney">Sydney</option>
+      <option value="Bali">Bali</option>
+      <option value="Rome">Rome</option>
+    </select>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-text">
-      <h1>Explore The World With Us</h1>
-      <p>Discover amazing places and make beautiful memories</p>
+  <section class="places">
+    <div class="place">
+      <img src="tokyo.jpg" alt="Tokyo">
+      <button class="visitBtn" data-city="Tokyo">Visit Now</button>
+    </div>
+    <div class="place">
+      <img src="paris.jpg" alt="Paris">
+      <button class="visitBtn" data-city="Paris">Visit Now</button>
+    </div>
+    <div class="place">
+      <img src="newyork.jpg" alt="New York">
+      <button class="visitBtn" data-city="New York">Visit Now</button>
     </div>
   </section>
 
-  <!-- Destinations Section -->
-  <section class="destinations">
-    <h2>Popular Destinations</h2>
-    <div class="destination-list">
-      <div class="place">
-        <img src="tokyo.jpg" alt="Tokyo">
-        <h3>Tokyo</h3>
-        <button class="btn" onclick="openPopup('Tokyo')">Visit Now</button>
-      </div>
-      <div class="place">
-        <img src="paris.jpg" alt="Paris">
-        <h3>Paris</h3>
-        <button class="btn" onclick="openPopup('Paris')">Visit Now</button>
-      </div>
-      <div class="place">
-        <img src="maldives.jpg" alt="Maldives">
-        <h3>Maldives</h3>
-        <button class="btn" onclick="openPopup('Maldives')">Visit Now</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Popup Form -->
+  <!-- Popup Registration Form -->
   <div id="popupForm" class="popup">
     <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
       <h2>Book Your Trip</h2>
       <form id="bookingForm">
-        <input type="text" id="name" placeholder="Full Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-
-        <select id="city" required>
-          <option value="">Select City</option>
-          <option value="Tokyo">Tokyo</option>
-          <option value="Paris">Paris</option>
-          <option value="Maldives">Maldives</option>
-          <option value="Any City">Any City</option>
-        </select>
-
-        <input type="number" id="days" placeholder="Number of Days" required />
-        <button type="submit" class="btn">Confirm Booking</button>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="city" placeholder="City Name" required>
+        <button type="submit">Confirm Booking</button>
       </form>
+      <p id="message"></p>
+      <button id="closePopup">Close</button>
     </div>
   </div>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>
-      Welcome to <strong>World Journey</strong> – where dreams meet destinations.  
-      We specialize in creating unforgettable travel experiences around the world.  
-      From tropical beaches to bustling cities, we make your journey truly special.
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-      <p>📞 <strong>Phone:</strong> +91 98765 43210</p>
-      <p>📧 <strong>Email:</strong> support@worldjourney.com</p>
-      <p>🏢 <strong>Address:</strong> Surat, Gujarat, India</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>© 2025 World Journey. All Rights Reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
