@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>World Journey</h1>
     <nav>
@@ -14,7 +15,6 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="admin.html">Admin Login</a></li>
       </ul>
     </nav>
   </header>
@@ -24,7 +24,7 @@
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
       <p>Discover your next adventure with World Journey</p>
-      <button class="btn" onclick="openForm('')">Plan Your Trip</button>
+      <button class="btn" onclick="scrollToPlanner()">Plan Your Trip</button>
     </div>
   </section>
 
@@ -35,51 +35,55 @@
       <div class="place">
         <img src="tokyo.jpg" alt="Tokyo">
         <h3>Tokyo</h3>
-        <button onclick="openForm('Tokyo')">Plan Your Trip</button>
+        <button onclick="scrollToPlanner('Tokyo')">Plan Your Trip</button>
       </div>
       <div class="place">
         <img src="paris.jpg" alt="Paris">
         <h3>Paris</h3>
-        <button onclick="openForm('Paris')">Plan Your Trip</button>
+        <button onclick="scrollToPlanner('Paris')">Plan Your Trip</button>
       </div>
       <div class="place">
         <img src="maldives.jpg" alt="Maldives">
         <h3>Maldives</h3>
-        <button onclick="openForm('Maldives')">Plan Your Trip</button>
+        <button onclick="scrollToPlanner('Maldives')">Plan Your Trip</button>
       </div>
     </div>
   </section>
 
-  <!-- Register Popup -->
-  <div id="popupForm" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="closeForm()">&times;</span>
-      <h2>Plan Your Trip</h2>
-      <form id="bookingForm">
+  <!-- 🌍 Trip Planner Section -->
+  <section id="planner" class="planner">
+    <div class="overlay">
+      <h2>Plan Your Dream Trip ✈️</h2>
+      <p>Fill out the details below and let us make your journey unforgettable.</p>
+
+      <form id="tripForm" class="trip-form">
         <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="city" placeholder="Enter City" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="text" id="city" placeholder="Destination City" required>
         <input type="number" id="days" placeholder="Number of Days" required>
         <button type="submit" class="btn">Confirm Booking</button>
       </form>
     </div>
-  </div>
+  </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about" class="about">
     <h2>About Us</h2>
     <p>
-      At <strong>World Journey</strong>, we believe travel is not just about destinations—it's about experiences, memories, and stories.
-      We help you plan trips across the world with ease, comfort, and joy.
+      Welcome to <strong>World Journey</strong> — your trusted travel companion.  
+      We help you create unforgettable memories through personalized trip planning  
+      and expert travel guidance.
     </p>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p>📞 Phone: +91 98765 43210</p>
-    <p>📧 Email: support@worldjourney.com</p>
-    <p>🏢 Address: Surat, Gujarat, India</p>
+    <div class="contact-box">
+      <p>📞 <strong>Phone:</strong> +91 98765 43210</p>
+      <p>📧 <strong>Email:</strong> support@worldjourney.com</p>
+      <p>🏢 <strong>Address:</strong> Surat, Gujarat, India</p>
+    </div>
   </section>
 
   <footer>
