@@ -1,4 +1,4 @@
-// ✅ Firebase Config
+// Firebase setup
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "world-journey-db.firebaseapp.com",
@@ -8,23 +8,25 @@ const firebaseConfig = {
   messagingSenderId: "YOUR_ID",
   appId: "YOUR_APP_ID"
 };
-
-// ✅ Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const bookingDB = firebase.database().ref("bookings");
 
-// ✅ Open Form
+// Popup controls
 function openForm(city) {
   document.getElementById("popupForm").style.display = "flex";
   document.getElementById("selectedCity").value = city;
 }
-
-// ✅ Close Form
 function closeForm() {
   document.getElementById("popupForm").style.display = "none";
 }
+function openAdmin() {
+  document.getElementById("adminLogin").style.display = "flex";
+}
+function closeAdmin() {
+  document.getElementById("adminLogin").style.display = "none";
+}
 
-// ✅ Submit Form
+// Submit form
 function submitForm() {
   const name = document.querySelector("#registerForm input[type='text']").value;
   const email = document.querySelector("#registerForm input[type='email']").value;
@@ -33,48 +35,44 @@ function submitForm() {
   const date = document.querySelector("#registerForm input[type='date']").value;
 
   if (!name || !email || !city || !tickets || !date) {
-    alert("⚠️ Please fill all fields!");
+    alert("⚠️ Please fill all details.");
     return false;
   }
 
   bookingDB.push({ name, email, city, tickets, date });
-  alert("🎉 Your order is confirmed!");
+  alert("🎉 Your Order is Confirmed!");
   closeForm();
   document.getElementById("registerForm").reset();
   return false;
 }
 
-// ✅ ADMIN LOGIN SYSTEM
-function checkAdminAccess() {
-  const pass = prompt("🔐 Enter Admin Password to View All Bookings:");
-  if (pass === "Khushi@123") {  // <-- Change password if you want
+// Verify admin password
+function verifyAdmin() {
+  const pass = document.getElementById("adminPass").value;
+  if (pass === "Khushi@123") {
     document.getElementById("bookings").style.display = "block";
+    closeAdmin();
     loadBookings();
-  } else if (pass !== null) {
-    alert("❌ Wrong Password! Access Denied.");
+  } else {
+    alert("❌ Incorrect Password");
   }
 }
 
-// ✅ Load bookings (Only when admin logged in)
+// Load bookings only for admin
 function loadBookings() {
   const bookingList = document.getElementById("bookingList");
-  bookingList.innerHTML = ""; // clear previous data
-  bookingDB.on("child_added", function(snapshot) {
+  bookingList.innerHTML = "";
+  bookingDB.on("child_added", (snapshot) => {
     const data = snapshot.val();
     const div = document.createElement("div");
     div.classList.add("bookingItem");
     div.innerHTML = `
-      <strong>Name:</strong> ${data.name} <br>
-      <strong>Email:</strong> ${data.email} <br>
-      <strong>City:</strong> ${data.city} <br>
-      <strong>Tickets:</strong> ${data.tickets} <br>
+      <strong>Name:</strong> ${data.name}<br>
+      <strong>Email:</strong> ${data.email}<br>
+      <strong>City:</strong> ${data.city}<br>
+      <strong>Tickets:</strong> ${data.tickets}<br>
       <strong>Date:</strong> ${data.date}
     `;
     bookingList.prepend(div);
   });
 }
-
-// ✅ Hide All Bookings by default
-window.onload = function() {
-  document.getElementById("bookings").style.display = "none";
-};
