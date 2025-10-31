@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background-color: #f8f8f8;
+  background-color: #f9f9f9;
   color: #222;
   scroll-behavior: smooth;
 }
@@ -16,7 +16,7 @@ header {
   position: fixed;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
-  color: white;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,12 +27,13 @@ header {
 header ul {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 20px;
 }
 
 header ul li a {
   text-decoration: none;
   color: white;
+  font-weight: 500;
   transition: 0.3s;
 }
 
@@ -53,22 +54,36 @@ header ul li a:hover {
 
 .hero-text h1 {
   font-size: 3rem;
-  letter-spacing: 2px;
 }
 
 .hero-text p {
+  margin: 15px 0;
   font-size: 1.2rem;
-  margin-top: 10px;
+}
+
+.btn {
+  background-color: #ffcc00;
+  color: black;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffd633;
+  transform: scale(1.05);
 }
 
 /* Destinations */
 .destinations {
   text-align: center;
-  padding: 90px 0;
+  padding: 80px 0;
 }
 
 .destinations h2 {
-  font-size: 2rem;
   margin-bottom: 30px;
 }
 
@@ -82,10 +97,10 @@ header ul li a:hover {
 .place {
   background: white;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
   width: 300px;
   transition: 0.3s;
-  overflow: hidden;
 }
 
 .place img {
@@ -95,60 +110,48 @@ header ul li a:hover {
 }
 
 .place h3 {
-  padding: 10px;
-  font-size: 1.2rem;
+  padding: 10px 0;
 }
 
-.place .btn {
-  margin-bottom: 15px;
-}
-
-/* Button */
-.btn {
-  background-color: #ffcc00;
-  color: black;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #ffe066;
-  transform: scale(1.05);
-}
-
-/* Popup */
+/* Popup Form */
 .popup {
   display: none;
   position: fixed;
-  top: 0;
+  z-index: 1000;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
 }
 
 .popup-content {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ffffff, #ffe680);
+  margin: 8% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 350px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   position: relative;
+  animation: popupFade 0.5s ease;
 }
 
-.popup-content h2 {
+@keyframes popupFade {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 25px;
+  cursor: pointer;
   color: #333;
-  margin-bottom: 20px;
 }
 
 .popup-content input {
+  display: block;
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -156,37 +159,39 @@ header ul li a:hover {
   border: 1px solid #ccc;
 }
 
-.close {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* About */
+/* About Section */
 .about {
   background-color: #fff;
   text-align: center;
-  padding: 80px 30px;
+  padding: 70px 30px;
 }
 
-/* Contact */
+.about h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Contact Section */
 .contact {
-  background-color: #111;
-  color: white;
+  background: #222;
+  color: #fff;
   text-align: center;
-  padding: 80px 30px;
+  padding: 70px 30px;
 }
 
 .contact h2 {
   color: #ffcc00;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-/* Footer */
+.contact-box p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+
 footer {
-  background: #000;
+  background: #111;
   color: #ccc;
   text-align: center;
   padding: 20px;
