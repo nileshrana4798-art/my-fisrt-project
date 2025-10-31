@@ -3,127 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World Journey</title>
+  <title>World Journey – Plan Your Trip</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <h1 class="logo">🌍 World Journey</h1>
+    <h1>World Journey</h1>
     <nav>
+      <a href="#home">Home</a>
+      <a href="#destinations">Plan Your Trip</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h2>Explore the World</h2>
-      <p>Plan your dream vacation with exclusive offers to top destinations!</p>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Explore the World With Us</h2>
+      <p>Your dream destinations are just a click away.</p>
+      <a href="#destinations" class="btn">Plan Your Trip</a>
     </div>
   </section>
 
-  <!-- Destinations -->
-  <section class="cities">
-    <h2>Top Destinations</h2>
-    <div class="city-container">
-
-      <div class="city-card">
-        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Paris" />
-        <div class="city-info">
-          <h3>Paris</h3>
-          <p>Price: ₹7,000</p>
-          <button onclick="openPopup('Paris', 7000)">Visit Now</button>
-        </div>
+  <section id="destinations" class="destinations">
+    <h2>Popular Destinations</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Paris" />
+        <h3>Paris</h3>
+        <p>₹5,000</p>
+        <button onclick="openPopup('Paris', 5000)">Book Ticket</button>
       </div>
 
-      <div class="city-card">
-        <img src="https://images.unsplash.com/photo-1568084306219-1e8e61c9b8cc?auto=format&fit=crop&w=800&q=80" alt="Tokyo" />
-        <div class="city-info">
-          <h3>Tokyo</h3>
-          <p>Price: ₹10,000</p>
-          <button onclick="openPopup('Tokyo', 10000)">Visit Now</button>
-        </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="New York" />
+        <h3>New York</h3>
+        <p>₹7,500</p>
+        <button onclick="openPopup('New York', 7500)">Book Ticket</button>
       </div>
 
-      <div class="city-card">
-        <img src="https://images.unsplash.com/photo-1549921296-3c88b6d6b5a0?auto=format&fit=crop&w=800&q=80" alt="New York" />
-        <div class="city-info">
-          <h3>New York</h3>
-          <p>Price: ₹9,000</p>
-          <button onclick="openPopup('New York', 9000)">Visit Now</button>
-        </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Maldives" />
+        <h3>Maldives</h3>
+        <p>₹9,000</p>
+        <button onclick="openPopup('Maldives', 9000)">Book Ticket</button>
       </div>
 
-      <div class="city-card">
-        <img src="https://images.unsplash.com/photo-1549887534-3db1bd59dcca?auto=format&fit=crop&w=800&q=80" alt="Dubai" />
-        <div class="city-info">
-          <h3>Dubai</h3>
-          <p>Price: ₹8,500</p>
-          <button onclick="openPopup('Dubai', 8500)">Visit Now</button>
-        </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1549693578-d683be217e58" alt="London" />
+        <h3>London</h3>
+        <p>₹6,800</p>
+        <button onclick="openPopup('London', 6800)">Book Ticket</button>
       </div>
 
-      <div class="city-card">
-        <img src="https://images.unsplash.com/photo-1578898887932-2c63e8f3e6b3?auto=format&fit=crop&w=800&q=80" alt="London" />
-        <div class="city-info">
-          <h3>London</h3>
-          <p>Price: ₹9,500</p>
-          <button onclick="openPopup('London', 9500)">Visit Now</button>
-        </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126" alt="Tokyo" />
+        <h3>Tokyo</h3>
+        <p>₹8,500</p>
+        <button onclick="openPopup('Tokyo', 8500)">Book Ticket</button>
       </div>
 
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090" alt="Dubai" />
+        <h3>Dubai</h3>
+        <p>₹6,200</p>
+        <button onclick="openPopup('Dubai', 6200)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="Singapore" />
+        <h3>Singapore</h3>
+        <p>₹7,000</p>
+        <button onclick="openPopup('Singapore', 7000)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Bali" />
+        <h3>Bali</h3>
+        <p>₹5,800</p>
+        <button onclick="openPopup('Bali', 5800)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526481280691-9062fd49d3f2" alt="Rome" />
+        <h3>Rome</h3>
+        <p>₹6,400</p>
+        <button onclick="openPopup('Rome', 6400)">Book Ticket</button>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="Bangkok" />
+        <h3>Bangkok</h3>
+        <p>₹4,900</p>
+        <button onclick="openPopup('Bangkok', 4900)">Book Ticket</button>
+      </div>
     </div>
   </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>World Journey is your travel companion, offering the best deals and unforgettable experiences across the globe.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@worldjourney.com | Phone: +91 98765 43210</p>
+  </section>
+
+  <footer>
+    <p>© 2025 World Journey | All Rights Reserved</p>
+  </footer>
 
   <!-- Popup Form -->
   <div id="popup" class="popup">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
-      <h2>Book Your Trip</h2>
+      <h2>Book Your Ticket</h2>
       <form id="bookingForm">
-        <label>Name:</label>
-        <input type="text" id="name" required />
-
-        <label>Email:</label>
-        <input type="email" id="email" required />
-
-        <label>City:</label>
-        <input type="text" id="city" readonly />
-
-        <label>Tickets:</label>
-        <input type="number" id="tickets" min="1" value="1" required />
-
-        <label>Total Price:</label>
-        <input type="text" id="total" readonly />
-
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="text" id="city" placeholder="City" readonly />
+        <input type="number" id="tickets" placeholder="Number of Tickets" min="1" required />
+        <input type="text" id="total" placeholder="Total Price" readonly />
         <button type="submit">Confirm Booking</button>
       </form>
     </div>
   </div>
-
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>
-      World Journey helps travelers explore the world’s most beautiful
-      destinations with affordable and personalized travel experiences.
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>Email: support@worldjourney.com</p>
-    <p>Phone: +91 98765 43210</p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 World Journey. All rights reserved.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
