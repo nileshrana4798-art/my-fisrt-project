@@ -11,14 +11,18 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const bookingDB = firebase.database().ref("bookings");
 
-// Popup controls
+// Open Register Form
 function openForm(city) {
   document.getElementById("popupForm").style.display = "flex";
   document.getElementById("selectedCity").value = city;
 }
+
+// Close Register Form
 function closeForm() {
   document.getElementById("popupForm").style.display = "none";
 }
+
+// Admin Login
 function openAdmin() {
   document.getElementById("adminLogin").style.display = "flex";
 }
@@ -26,7 +30,7 @@ function closeAdmin() {
   document.getElementById("adminLogin").style.display = "none";
 }
 
-// Submit form
+// Submit Form
 function submitForm() {
   const name = document.querySelector("#registerForm input[type='text']").value;
   const email = document.querySelector("#registerForm input[type='email']").value;
@@ -35,7 +39,7 @@ function submitForm() {
   const date = document.querySelector("#registerForm input[type='date']").value;
 
   if (!name || !email || !city || !tickets || !date) {
-    alert("⚠️ Please fill all details.");
+    alert("⚠️ Please fill all fields!");
     return false;
   }
 
@@ -46,7 +50,7 @@ function submitForm() {
   return false;
 }
 
-// Verify admin password
+// Verify Admin Password (only admin sees bookings)
 function verifyAdmin() {
   const pass = document.getElementById("adminPass").value;
   if (pass === "Khushi@123") {
@@ -58,20 +62,20 @@ function verifyAdmin() {
   }
 }
 
-// Load bookings only for admin
+// Load Bookings (only for admin)
 function loadBookings() {
   const bookingList = document.getElementById("bookingList");
   bookingList.innerHTML = "";
-  bookingDB.on("child_added", (snapshot) => {
-    const data = snapshot.val();
+  bookingDB.on("child_added", (snap) => {
+    const data = snap.val();
     const div = document.createElement("div");
     div.classList.add("bookingItem");
     div.innerHTML = `
-      <strong>Name:</strong> ${data.name}<br>
-      <strong>Email:</strong> ${data.email}<br>
-      <strong>City:</strong> ${data.city}<br>
-      <strong>Tickets:</strong> ${data.tickets}<br>
-      <strong>Date:</strong> ${data.date}
+      <b>Name:</b> ${data.name}<br>
+      <b>Email:</b> ${data.email}<br>
+      <b>City:</b> ${data.city}<br>
+      <b>Tickets:</b> ${data.tickets}<br>
+      <b>Date:</b> ${data.date}
     `;
     bookingList.prepend(div);
   });
