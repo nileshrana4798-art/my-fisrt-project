@@ -1,18 +1,21 @@
-// Open popup with selected city
-function openPopup(cityName) {
-  document.getElementById("popupForm").style.display = "flex";
-  document.getElementById("city").value = cityName || "";
+const popupForm = document.getElementById("popupForm");
+const bookingForm = document.getElementById("bookingForm");
+
+// Open popup form
+function openForm(cityName) {
+  popupForm.style.display = "block";
+  document.getElementById("city").value = cityName;
 }
 
-// Close popup
-function closePopup() {
-  document.getElementById("popupForm").style.display = "none";
+// Close popup form
+function closeForm() {
+  popupForm.style.display = "none";
 }
 
-// Handle booking form submit
-document.getElementById("bookingForm").addEventListener("submit", function (e) {
+// On form submit
+bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  alert("✅ Your order is confirmed! Thank you for booking with World Journey.");
-  document.getElementById("popupForm").style.display = "none";
-  this.reset();
+  alert("✅ Your order is confirmed!");
+  bookingForm.reset();
+  closeForm();
 });
