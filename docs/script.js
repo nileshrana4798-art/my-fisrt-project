@@ -21,7 +21,6 @@ const visitBtns = document.querySelectorAll(".visitBtn");
 const closePopup = document.getElementById("closePopup");
 const bookingForm = document.getElementById("bookingForm");
 const message = document.getElementById("message");
-const citySelect = document.getElementById("citySelect");
 
 // 🔹 Open popup when clicking Visit Now
 visitBtns.forEach(btn => {
@@ -29,14 +28,6 @@ visitBtns.forEach(btn => {
     popup.style.display = "flex";
     document.getElementById("city").value = btn.dataset.city;
   });
-});
-
-// 🔹 Also open popup when city selected from dropdown
-citySelect.addEventListener("change", () => {
-  if (citySelect.value !== "") {
-    popup.style.display = "flex";
-    document.getElementById("city").value = citySelect.value;
-  }
 });
 
 // 🔹 Close popup
