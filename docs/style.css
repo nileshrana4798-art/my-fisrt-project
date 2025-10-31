@@ -13,7 +13,7 @@ body {
 
 header {
   width: 100%;
-  background: linear-gradient(90deg, #111, #333);
+  background: #111;
   color: #fff;
   padding: 15px 0;
   text-align: center;
@@ -22,17 +22,11 @@ header {
   z-index: 100;
 }
 
-header .label {
-  margin-right: 10px;
-  font-size: 16px;
-}
-
 header select {
-  padding: 7px 12px;
-  border-radius: 8px;
+  margin-left: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
   border: none;
-  outline: none;
-  font-size: 15px;
 }
 
 .places {
@@ -73,11 +67,6 @@ header select {
   border-radius: 25px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s;
-}
-
-.visitBtn:hover {
-  background: #ff1c00;
 }
 
 .popup {
@@ -98,12 +87,6 @@ header select {
   border-radius: 15px;
   width: 320px;
   text-align: center;
-  animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 .popup-content input {
