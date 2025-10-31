@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -27,7 +27,7 @@ header {
 header ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 header ul li a {
@@ -53,33 +53,23 @@ header ul li a:hover {
 
 .hero-text h1 {
   font-size: 3rem;
+  letter-spacing: 2px;
 }
 
 .hero-text p {
-  margin: 15px 0;
   font-size: 1.2rem;
-}
-
-.btn {
-  background-color: #ffcc00;
-  color: black;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 30px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #ffe066;
-  transform: scale(1.05);
+  margin-top: 10px;
 }
 
 /* Destinations */
 .destinations {
   text-align: center;
-  padding: 80px 0;
+  padding: 90px 0;
+}
+
+.destinations h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
 
 .destination-list {
@@ -92,10 +82,10 @@ header ul li a:hover {
 .place {
   background: white;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 300px;
   transition: 0.3s;
+  overflow: hidden;
 }
 
 .place img {
@@ -105,71 +95,96 @@ header ul li a:hover {
 }
 
 .place h3 {
-  padding: 10px 0;
+  padding: 10px;
+  font-size: 1.2rem;
 }
 
-/* 🌍 Planner Section */
-.planner {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
-  height: 100vh;
-  position: relative;
-  display: flex;
+.place .btn {
+  margin-bottom: 15px;
+}
+
+/* Button */
+.btn {
+  background-color: #ffcc00;
+  color: black;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffe066;
+  transform: scale(1.05);
+}
+
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
 }
 
-.planner .overlay {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  text-align: center;
+.popup-content {
+  background: white;
   padding: 40px;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 90%;
-  max-width: 600px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
-.planner h2 {
-  font-size: 2.2rem;
-  color: #ffcc00;
-  margin-bottom: 10px;
+.popup-content h2 {
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.trip-form {
-  margin-top: 20px;
-}
-
-.trip-form input {
-  width: 90%;
-  padding: 12px;
+.popup-content input {
+  width: 100%;
+  padding: 10px;
   margin: 10px 0;
-  border: none;
   border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
-.trip-form .btn {
-  width: 90%;
-  margin-top: 10px;
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 /* About */
 .about {
   background-color: #fff;
   text-align: center;
-  padding: 70px 30px;
+  padding: 80px 30px;
 }
 
 /* Contact */
 .contact {
-  background: #111;
+  background-color: #111;
   color: white;
   text-align: center;
-  padding: 70px 30px;
+  padding: 80px 30px;
 }
 
 .contact h2 {
   color: #ffcc00;
+  margin-bottom: 20px;
 }
 
+/* Footer */
 footer {
   background: #000;
   color: #ccc;
