@@ -1,55 +1,58 @@
-// Firebase Config
+// ✅ Firebase setup
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBQcex7SCBZVv8UBLfvw0P3B1Yje0HZsr0",
-  authDomain: "world-journey-db.firebaseapp.com",
+  apiKey: "AIzaSyBQcex7SCBZVv8UBLfvwqvxzZIQ58JXQw",
+  authDomain: "world-jouney-db.firebaseapp.com",
   databaseURL: "https://world-jouney-db-default-rtdb.firebaseio.com",
-  projectId: "world-journey-db",
-  storageBucket: "world-journey-db.appspot.com",
-  messagingSenderId: "1057320712341",
-  appId: "1:1057320712341:web:3c4b6f56bff9828b3f7b73"
+  projectId: "world-jouney-db",
+  storageBucket: "world-jouney-db.appspot.com",
+  messagingSenderId: "744693716678",
+  appId: "1:744693716678:web:9bb1c5b4dd78536a6e1e3e"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const bookingDB = firebase.database().ref("bookings");
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const bookingDB = ref(db, "bookings");
 
-// Open Form
-function openForm(city) {
+// ✅ Open & Close popup
+window.openForm = function(city) {
   document.getElementById("popupForm").style.display = "flex";
   document.getElementById("selectedCity").value = city;
-}
+};
 
-// Close Form
-function closeForm() {
+window.closeForm = function() {
   document.getElementById("popupForm").style.display = "none";
-}
+};
 
-// Submit Form
-function submitForm() {
+// ✅ Submit form
+window.submitForm = function() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const city = document.getElementById("selectedCity").value;
   const tickets = document.getElementById("tickets").value;
   const date = document.getElementById("date").value;
 
-  bookingDB.push({
-    name: name,
-    email: email,
-    city: city,
-    tickets: tickets,
-    date: date
-  });
+  if (!name || !email || !city || !tickets || !date) {
+    alert("⚠️ Please fill all details!");
+    return false;
+  }
 
-  alert("🎉 Your order is confirmed!");
-  document.getElementById("registerForm").reset();
-  closeForm();
+  push(bookingDB, { name, email, city, tickets, date })
+    .then(() => {
+      alert("🎉 Your order is confirmed!");
+      document.getElementById("registerForm").reset();
+      closeForm();
+    })
+    .catch((err) => alert("❌ Error: " + err.message));
+
   return false;
-}
+};
 
-// Display All Bookings
+// ✅ Display bookings (Only Admin — by default)
 const bookingList = document.getElementById("bookingList");
-
-bookingDB.on("child_added", function(snapshot) {
+onChildAdded(bookingDB, (snapshot) => {
   const data = snapshot.val();
   const div = document.createElement("div");
   div.classList.add("bookingItem");
