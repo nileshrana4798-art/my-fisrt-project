@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World Journey 🌍</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Journey</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Header -->
   <header>
-    <div class="logo">World Journey 🌏</div>
+    <div class="logo">World Journey</div>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -22,103 +21,129 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
+  <!-- Hero -->
+  <section id="home" class="hero">
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
-      <p>Book your dream destination today!</p>
-      <a href="#destinations" class="btn">Discover Destinations</a>
+      <p>Discover your next adventure with World Journey</p>
+      <button class="btn" onclick="openForm('Any City')">Visit Now</button>
     </div>
   </section>
 
-  <!-- Destinations Section -->
-  <section class="destinations" id="destinations">
-    <h2>Popular Destinations</h2>
+  <!-- Destinations -->
+  <section id="destinations" class="destinations">
+    <h2>Top Destinations</h2>
     <div class="grid">
-      <div class="card" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34');">
         <div class="overlay">
-          <h3>Maldives</h3>
-          <button onclick="openForm('Maldives')">Visit Now</button>
+          <h3>Paris</h3>
+          <p>The city of love and lights, full of romance and art.</p>
+          <button class="btn" onclick="openForm('Paris')">Visit Now</button>
         </div>
       </div>
-
-      <div class="card" style="background-image: url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad');">
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');">
         <div class="overlay">
-          <h3>Switzerland</h3>
-          <button onclick="openForm('Switzerland')">Visit Now</button>
+          <h3>Tokyo</h3>
+          <p>Experience the future with Japan’s rich culture.</p>
+          <button class="btn" onclick="openForm('Tokyo')">Visit Now</button>
+        </div>
+      </div>
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');">
+        <div class="overlay">
+          <h3>Dubai</h3>
+          <p>Luxury and innovation in the desert city of dreams.</p>
+          <button class="btn" onclick="openForm('Dubai')">Visit Now</button>
+        </div>
+      </div>
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad');">
+        <div class="overlay">
+          <h3>New York</h3>
+          <p>The city that never sleeps, where dreams come true.</p>
+          <button class="btn" onclick="openForm('New York')">Visit Now</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Booking Form Popup -->
-  <div class="popup" id="popupForm">
-    <div class="form-content">
-      <span class="close-btn" onclick="closeForm()">×</span>
-      <h2>Book Your Journey</h2>
+  <!-- Registration Popup -->
+  <div id="popupForm" class="popup">
+    <div class="form-box">
+      <span class="close-btn" onclick="closeForm()">&times;</span>
+      <h2>Book Your Journey ✈️</h2>
       <form id="registerForm" onsubmit="return submitForm()">
-        <label>Name:</label>
-        <input type="text" required />
-        <label>Email:</label>
-        <input type="email" required />
-        <label>Destination:</label>
-        <input type="text" id="selectedCity" readonly />
-        <label>Tickets:</label>
-        <input type="number" required />
-        <label>Date:</label>
-        <input type="date" required />
-        <button class="submit-btn" type="submit">Submit</button>
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" required>
+
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter your email" required>
+
+        <label>Select City</label>
+        <select id="selectedCity" required>
+          <option value="">-- Choose City --</option>
+          <option value="Paris">Paris</option>
+          <option value="Tokyo">Tokyo</option>
+          <option value="Dubai">Dubai</option>
+          <option value="New York">New York</option>
+          <option value="Any City">Any City</option>
+        </select>
+
+        <label>Number of Tickets</label>
+        <input type="number" min="1" max="10" required>
+
+        <label>Travel Date</label>
+        <input type="date" required>
+
+        <button type="submit" class="submit-btn">Confirm Booking</button>
       </form>
     </div>
   </div>
 
-  <!-- About Section -->
-  <section class="about" id="about">
-    <h2>About Us</h2>
-    <p>We bring your travel dreams to life with the best destinations and smooth booking experiences. 
-       Our mission is to help you explore, relax, and make memories across the globe.</p>
-    <div class="about-boxes">
-      <div class="box">
-        <h3>Trusted Service</h3>
-        <p>Over 10,000 happy travelers worldwide.</p>
-      </div>
-      <div class="box">
-        <h3>Affordable Prices</h3>
-        <p>Travel packages that suit every budget.</p>
-      </div>
-      <div class="box">
-        <h3>24/7 Support</h3>
-        <p>Our team is always ready to assist you anytime, anywhere.</p>
-      </div>
+  <!-- Admin Login Popup -->
+  <div id="adminLogin" class="popup">
+    <div class="form-box">
+      <span class="close-btn" onclick="closeAdmin()">&times;</span>
+      <h2>Admin Login 🔑</h2>
+      <input type="password" id="adminPass" placeholder="Enter Admin Password">
+      <button class="submit-btn" onclick="verifyAdmin()">Login</button>
     </div>
-  </section>
+  </div>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>Have questions or need help? Reach out to us!</p>
-    <div class="contact-box">
-      <p>📧 Email: <strong>support@worldjourney.com</strong></p>
-      <p>📞 Phone: <strong>+91 9876543210</strong></p>
-      <p>📍 Address: Surat, Gujarat, India</p>
-    </div>
-  </section>
-
-  <!-- Bookings Section (Visible only to admin) -->
-  <section class="bookings" id="bookings">
-    <h2>All Bookings (Admin View)</h2>
+  <!-- All Bookings (Hidden by default) -->
+  <section id="bookings" class="bookings">
+    <h2>All Bookings</h2>
     <div id="bookingList"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <h2>About World Journey</h2>
+    <p>World Journey inspires travelers to explore beautiful destinations, unique cultures, and unforgettable experiences. 
+    We make your travel smooth, memorable, and affordable.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact Us 📞</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Write your message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 World Journey | Designed by Khushi ❤️</p>
+    <p>© 2025 World Journey | Designed by Khushi 💛</p>
+    <button class="btn" onclick="openAdmin()">Admin Login</button>
   </footer>
 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <!-- JS -->
   <script src="script.js"></script>
-  <button onclick="checkAdminAccess()" class="btn" style="margin:40px auto; display:block;">
-  🔑 Admin Login
-</button>
 
 </body>
 </html>
