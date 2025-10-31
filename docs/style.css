@@ -6,45 +6,45 @@
 }
 
 body {
-  background: #f8fafc;
+  background: #fff;
   color: #333;
   scroll-behavior: smooth;
 }
 
-/* Header */
+/* HEADER */
 header {
   position: fixed;
+  top: 0;
   width: 100%;
-  background: linear-gradient(135deg, #0072ff, #00c6ff);
-  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
+  padding: 15px 60px;
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 header h1 {
   font-size: 24px;
 }
 
-header nav a {
+nav a {
   color: white;
   margin: 0 15px;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: 0.3s;
 }
 
-header nav a:hover {
+nav a:hover {
   color: #ffd700;
 }
 
-/* Hero */
+/* HERO */
 .hero {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover;
-  height: 90vh;
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") center/cover no-repeat;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,156 +53,152 @@ header nav a:hover {
 }
 
 .hero-content h2 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 50px;
+  margin-bottom: 15px;
 }
 
-.hero-content .btn {
-  display: inline-block;
+.hero-content p {
+  font-size: 18px;
+}
+
+.btn {
+  background: #ffcc00;
+  color: #000;
   padding: 10px 25px;
-  background: #ffd700;
-  color: #333;
-  border-radius: 25px;
-  margin-top: 15px;
+  border-radius: 30px;
+  font-weight: 600;
   text-decoration: none;
   transition: 0.3s;
 }
 
-.hero-content .btn:hover {
-  background: white;
+.btn:hover {
+  background: #ff9900;
 }
 
-/* Destinations */
+/* DESTINATIONS */
 .destinations {
+  padding: 100px 50px;
   text-align: center;
-  padding: 80px 20px;
-}
-
-.destinations h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
 }
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 25px;
+  margin-top: 40px;
 }
 
 .card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
 }
 
 .card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 15px 15px 0 0;
 }
 
 .card h3 {
-  margin: 15px 0 5px;
-}
-
-.card p {
-  color: #666;
+  margin: 10px 0;
 }
 
 .card button {
-  background: #0072ff;
-  color: white;
+  background: #007bff;
   border: none;
-  padding: 10px 20px;
-  margin: 15px 0 20px;
-  border-radius: 25px;
+  color: white;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
 .card button:hover {
-  background: #005ecb;
+  background: #0056b3;
 }
 
-/* About */
+/* ABOUT */
 .about {
-  background: #fff;
-  padding: 80px 20px;
+  background: #f9f9f9;
+  padding: 100px 60px;
 }
 
 .about-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 40px;
 }
 
 .about-text {
-  flex: 1 1 400px;
+  flex: 1;
 }
 
 .about-text h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
 }
 
 .about-text p {
   margin-bottom: 15px;
-  color: #555;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+.about-img {
+  flex: 1;
 }
 
 .about-img img {
   width: 100%;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-/* Contact */
+/* CONTACT */
 .contact {
-  background: linear-gradient(135deg, #e3f2fd, #f1f8ff);
+  background: #fff;
+  padding: 100px 60px;
   text-align: center;
-  padding: 80px 20px;
 }
 
 .contact-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
+  justify-content: space-around;
   margin-top: 30px;
 }
 
 .contact-info {
-  flex: 1 1 300px;
+  flex: 1;
+  min-width: 250px;
   text-align: left;
-  font-size: 15px;
-  line-height: 1.8;
 }
 
 .contact-form {
-  flex: 1 1 300px;
+  flex: 1;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .contact-form input, .contact-form textarea {
-  padding: 12px;
+  margin: 10px 0;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 100%;
 }
 
 .contact-form button {
-  background: #0072ff;
+  background: #28a745;
   color: white;
   padding: 12px;
   border: none;
@@ -212,62 +208,40 @@ header nav a:hover {
 }
 
 .contact-form button:hover {
-  background: #005ecb;
+  background: #218838;
 }
 
-/* Footer */
-footer {
-  background: #0072ff;
-  color: white;
-  text-align: center;
-  padding: 15px;
-}
-
-/* Popup */
+/* POPUP */
 .popup {
   display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
 }
 
 .popup-content {
   background: white;
   padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  width: 300px;
+  border-radius: 10px;
+  width: 320px;
   position: relative;
-  box-shadow: 0 4px 25px rgba(0,0,0,0.2);
-}
-
-.popup-content input {
-  margin: 10px 0;
-  padding: 8px;
-  width: 90%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.popup-content button {
-  background: #0072ff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 10px;
-  cursor: pointer;
 }
 
 .close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
+  top: 10px; right: 15px;
+  font-size: 22px;
   cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
 }
