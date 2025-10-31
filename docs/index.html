@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Journey</title>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Firebase SDK -->
-  <script type="module" src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Journey 🌍</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 <body>
-
   <!-- Header -->
   <header>
-    <div class="logo">World Journey</div>
+    <div class="logo">World Journey 🌏</div>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#destinations">Destinations</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#bookings">All Bookings</a></li>
       </ul>
     </nav>
   </header>
@@ -29,57 +26,48 @@
   <section class="hero" id="home">
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
-      <p>Find your next adventure today!</p>
-      <a href="#destinations" class="btn">Visit Now</a>
+      <p>Book your dream destination today!</p>
+      <a href="#destinations" class="btn">Discover Destinations</a>
     </div>
   </section>
 
-  <!-- Destinations -->
+  <!-- Destinations Section -->
   <section class="destinations" id="destinations">
     <h2>Popular Destinations</h2>
     <div class="grid">
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')">
+      <div class="card" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
         <div class="overlay">
           <h3>Maldives</h3>
           <button onclick="openForm('Maldives')">Visit Now</button>
         </div>
       </div>
 
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')">
+      <div class="card" style="background-image: url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad');">
         <div class="overlay">
           <h3>Switzerland</h3>
           <button onclick="openForm('Switzerland')">Visit Now</button>
         </div>
       </div>
-
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1')">
-        <div class="overlay">
-          <h3>Japan</h3>
-          <button onclick="openForm('Japan')">Visit Now</button>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Popup Booking Form -->
+  <!-- Booking Form Popup -->
   <div class="popup" id="popupForm">
     <div class="form-content">
-      <span class="close-btn" onclick="closeForm()">&times;</span>
-      <h2>Book Your Trip</h2>
+      <span class="close-btn" onclick="closeForm()">×</span>
+      <h2>Book Your Journey</h2>
       <form id="registerForm" onsubmit="return submitForm()">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <select id="selectedCity" required>
-          <option value="">-- Select City --</option>
-          <option value="Maldives">Maldives</option>
-          <option value="Switzerland">Switzerland</option>
-          <option value="Japan">Japan</option>
-          <option value="Dubai">Dubai</option>
-          <option value="Singapore">Singapore</option>
-        </select>
-        <input type="number" id="tickets" placeholder="No. of Tickets" required>
-        <input type="date" id="date" required>
-        <button type="submit" class="submit-btn">Confirm Booking</button>
+        <label>Name:</label>
+        <input type="text" required />
+        <label>Email:</label>
+        <input type="email" required />
+        <label>Destination:</label>
+        <input type="text" id="selectedCity" readonly />
+        <label>Tickets:</label>
+        <input type="number" required />
+        <label>Date:</label>
+        <input type="date" required />
+        <button class="submit-btn" type="submit">Submit</button>
       </form>
     </div>
   </div>
@@ -87,26 +75,36 @@
   <!-- About Section -->
   <section class="about" id="about">
     <h2>About Us</h2>
-    <p>
-      Welcome to <strong>World Journey</strong> — your trusted partner in exploring the most
-      beautiful destinations around the globe. We are passionate about creating memorable travel experiences.
-      From exotic beaches to breathtaking mountains, we make your travel dreams come true.
-    </p>
+    <p>We bring your travel dreams to life with the best destinations and smooth booking experiences. 
+       Our mission is to help you explore, relax, and make memories across the globe.</p>
+    <div class="about-boxes">
+      <div class="box">
+        <h3>Trusted Service</h3>
+        <p>Over 10,000 happy travelers worldwide.</p>
+      </div>
+      <div class="box">
+        <h3>Affordable Prices</h3>
+        <p>Travel packages that suit every budget.</p>
+      </div>
+      <div class="box">
+        <h3>24/7 Support</h3>
+        <p>Our team is always ready to assist you anytime, anywhere.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p>We’d love to hear from you!</p>
-    <form id="contactForm">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit" class="submit-btn">Send Message</button>
-    </form>
+    <p>Have questions or need help? Reach out to us!</p>
+    <div class="contact-box">
+      <p>📧 Email: <strong>support@worldjourney.com</strong></p>
+      <p>📞 Phone: <strong>+91 9876543210</strong></p>
+      <p>📍 Address: Surat, Gujarat, India</p>
+    </div>
   </section>
 
-  <!-- Admin Booking List -->
+  <!-- Bookings Section (Visible only to admin) -->
   <section class="bookings" id="bookings">
     <h2>All Bookings (Admin View)</h2>
     <div id="bookingList"></div>
@@ -114,8 +112,9 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 World Journey | All Rights Reserved</p>
+    <p>© 2025 World Journey | Designed by Khushi ❤️</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
