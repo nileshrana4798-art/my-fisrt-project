@@ -8,10 +8,12 @@ const firebaseConfig = {
   messagingSenderId: "YOUR_ID",
   appId: "YOUR_APP_ID"
 };
+
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const bookingDB = firebase.database().ref("bookings");
 
-// Admin password
+// ---------------- Admin Password ----------------
 const ADMIN_PASSWORD = "Khushi123";
 
 // ---------------- City Info ----------------
@@ -22,9 +24,11 @@ const cityInfo = {
   "New York": "The city that never sleeps, where dreams come true."
 };
 
-// ---------------- Form Functions ----------------
+// ---------------- Popup Form ----------------
 function openForm(city) {
-  document.getElementById("popupForm").style.display = "flex";
+  const popup = document.getElementById("popupForm");
+  popup.style.display = "flex";
+
   document.getElementById("selectedCity").value = city;
   document.getElementById("popupCityTitle").innerText = city;
   document.getElementById("popupCityDesc").innerText = cityInfo[city];
@@ -34,52 +38,74 @@ function closeForm() {
   document.getElementById("popupForm").style.display = "none";
 }
 
-// Submit form
+// ---------------- Submit Form ----------------
 function submitForm() {
-  const name = document.querySelector('#registerForm input[type="text"]').value;
-  const email = document.querySelector('#registerForm input[type="email"]').value;
+  const name = document.querySelector('#registerForm input[type="text"]').value.trim();
+  const email = document.querySelector('#registerForm input[type="email"]').value.trim();
   const city = document.getElementById("selectedCity").value;
   const tickets = document.querySelector('#registerForm input[type="number"]').value;
   const date = document.querySelector('#registerForm input[type="date"]').value;
 
   if (!name || !email || !city || !tickets || !date) {
-    alert("Please fill all fields!");
+    alert("⚠️ Please fill all fields before confirming your booking!");
     return false;
   }
 
-  const newBooking = { name, email, city, tickets, date, timestamp: new Date().toISOString() };
+  // Booking object
+  const newBooking = {
+    name: name,
+    email: email,
+    city: city,
+    tickets: tickets,
+    date: date,
+    createdAt: new Date().toLocaleString()
+  };
 
-  bookingDB.push(newBooking, (error) => {
-    if (error) alert("Booking failed! Try again.");
-    else {
-      alert("Booking successful!");
+  // Push data to Firebase
+  bookingDB.push(newBooking)
+    .then(() => {
+      alert("✅ Your booking is confirmed!\nThank you for choosing World Journey 💛");
       document.getElementById("registerForm").reset();
       closeForm();
-    }
-  });
+    })
+    .catch((error) => {
+      console.error("Error saving booking:", error);
+      alert("❌ Something went wrong. Please try again later.");
+    });
 
-  return false;
+  return false; // Prevent form reload
 }
 
-// ---------------- Admin Bookings ----------------
+// ---------------- Admin Section ----------------
 function showAdminBookings() {
   const password = prompt("Enter Admin Password:");
   if (password !== ADMIN_PASSWORD) {
-    alert("Wrong password!");
+    alert("❌ Wrong password! Access denied.");
     return;
   }
 
   document.getElementById("bookings").style.display = "block";
   const bookingList = document.getElementById("bookingList");
-  bookingList.innerHTML = "";
+  bookingList.innerHTML = "<p>Loading bookings...</p>";
 
   bookingDB.on("value", (snapshot) => {
     bookingList.innerHTML = "";
+    if (!snapshot.exists()) {
+      bookingList.innerHTML = "<p>No bookings found.</p>";
+      return;
+    }
+
     snapshot.forEach((child) => {
       const b = child.val();
       const div = document.createElement("div");
       div.className = "booking-item";
-      div.innerHTML = `<strong>${b.name}</strong> (${b.email}) booked <strong>${b.tickets}</strong> ticket(s) for <strong>${b.city}</strong> on <strong>${b.date}</strong>`;
+      div.innerHTML = `
+        <strong>${b.name}</strong> (${b.email})<br>
+        City: <strong>${b.city}</strong><br>
+        Tickets: ${b.tickets}<br>
+        Date: ${b.date}<br>
+        <small>Booked on: ${b.createdAt}</small>
+      `;
       bookingList.appendChild(div);
     });
   });
