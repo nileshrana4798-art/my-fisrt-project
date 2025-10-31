@@ -1,35 +1,31 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
-
-// ✅ Firebase Config (use your real config here)
+// ✅ Firebase Config (apna config yaha daale)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyBQcex7SCBZVv8UBLfvw0P3B1Yje0HZsr0",
   authDomain: "world-journey-db.firebaseapp.com",
   databaseURL: "https://world-jouney-db-default-rtdb.firebaseio.com",
   projectId: "world-journey-db",
   storageBucket: "world-journey-db.appspot.com",
-  messagingSenderId: "YOUR_ID",
-  appId: "YOUR_APP_ID"
+  messagingSenderId: "1057320712341",
+  appId: "1:1057320712341:web:3c4b6f56bff9828b3f7b73"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const bookingDB = ref(db, "bookings");
+firebase.initializeApp(firebaseConfig);
+const bookingDB = firebase.database().ref("bookings");
 
 // 🧳 Open Form
-window.openForm = function(city) {
+function openForm(city) {
   document.getElementById("popupForm").style.display = "flex";
-  document.getElementById("selectedCity").value = city || "";
-};
+  document.getElementById("selectedCity").value = city;
+}
 
 // 🧾 Close Form
-window.closeForm = function() {
+function closeForm() {
   document.getElementById("popupForm").style.display = "none";
-};
+}
 
 // ✅ Submit Form
-window.submitForm = function() {
+function submitForm() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const city = document.getElementById("selectedCity").value;
@@ -41,7 +37,8 @@ window.submitForm = function() {
     return false;
   }
 
-  push(bookingDB, {
+  // Data Save to Firebase
+  bookingDB.push({
     name,
     email,
     city,
@@ -53,28 +50,20 @@ window.submitForm = function() {
   document.getElementById("registerForm").reset();
   closeForm();
   return false;
-};
-
-// 👩‍💼 Admin Access
-const adminPassword = "admin123"; // change this
-window.onload = function() {
-  const pass = prompt("Enter admin password to see all bookings (or Cancel to skip):");
-  if (pass === adminPassword) {
-    document.getElementById("adminSection").classList.remove("hidden");
-  }
-};
+}
 
 // 👀 Real-time Booking Display
 const bookingList = document.getElementById("bookingList");
-onChildAdded(bookingDB, (snapshot) => {
+
+bookingDB.on("child_added", function(snapshot) {
   const data = snapshot.val();
   const div = document.createElement("div");
   div.classList.add("bookingItem");
   div.innerHTML = `
-    <strong>Name:</strong> ${data.name}<br>
-    <strong>Email:</strong> ${data.email}<br>
-    <strong>City:</strong> ${data.city}<br>
-    <strong>Tickets:</strong> ${data.tickets}<br>
+    <strong>Name:</strong> ${data.name} <br>
+    <strong>Email:</strong> ${data.email} <br>
+    <strong>City:</strong> ${data.city} <br>
+    <strong>Tickets:</strong> ${data.tickets} <br>
     <strong>Date:</strong> ${data.date}
   `;
   bookingList.prepend(div);
