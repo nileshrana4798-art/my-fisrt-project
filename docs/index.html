@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js"></script>
+  <script type="module" src="script.js"></script>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <div class="logo">World Journey</div>
     <nav>
@@ -25,6 +25,7 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
@@ -33,6 +34,7 @@
     </div>
   </section>
 
+  <!-- Destinations -->
   <section class="destinations" id="destinations">
     <h2>Popular Destinations</h2>
     <div class="grid">
@@ -59,7 +61,7 @@
     </div>
   </section>
 
-  <!-- Popup Form -->
+  <!-- Popup Booking Form -->
   <div class="popup" id="popupForm">
     <div class="form-content">
       <span class="close-btn" onclick="closeForm()">&times;</span>
@@ -82,16 +84,38 @@
     </div>
   </div>
 
-  <!-- Only you can see bookings -->
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>
+      Welcome to <strong>World Journey</strong> — your trusted partner in exploring the most
+      beautiful destinations around the globe. We are passionate about creating memorable travel experiences.
+      From exotic beaches to breathtaking mountains, we make your travel dreams come true.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you!</p>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Admin Booking List -->
   <section class="bookings" id="bookings">
     <h2>All Bookings (Admin View)</h2>
     <div id="bookingList"></div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 World Journey | All Rights Reserved</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
