@@ -1,3 +1,4 @@
+/* --- Full CSS from your version --- */
 * {
   margin: 0;
   padding: 0;
@@ -23,9 +24,26 @@ header {
   z-index: 1000;
 }
 
-.logo {
+header .logo {
   font-size: 1.8em;
   font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ffcd00;
 }
 
 .hero {
@@ -38,12 +56,23 @@ header {
   color: white;
 }
 
+.hero-text h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
 .btn {
   background-color: #ffcd00;
   color: black;
   padding: 10px 20px;
   border-radius: 30px;
-  border: none;
+  text-decoration: none;
+  transition: 0.3s;
   cursor: pointer;
 }
 
@@ -87,6 +116,14 @@ header {
   color: #fff;
 }
 
+.overlay button {
+  background: #ffcd00;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .popup {
   display: none;
   position: fixed;
@@ -104,6 +141,7 @@ header {
   border-radius: 15px;
   width: 350px;
   position: relative;
+  text-align: left;
 }
 
 .close-btn {
@@ -114,7 +152,7 @@ header {
   cursor: pointer;
 }
 
-input {
+input, select {
   width: 100%;
   margin-bottom: 15px;
   padding: 10px;
@@ -130,6 +168,11 @@ input {
   cursor: pointer;
 }
 
+.submit-btn:hover {
+  background: #222;
+  color: white;
+}
+
 .bookings {
   padding: 50px 60px;
   text-align: center;
@@ -137,10 +180,9 @@ input {
 
 .bookingItem {
   background: #f5f5f5;
-  padding: 15px 20px;
+  padding: 15px;
   margin: 10px auto;
   border-radius: 10px;
   max-width: 500px;
-  text-align: left;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
