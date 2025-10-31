@@ -21,6 +21,6 @@ document.getElementById('tickets').addEventListener('input', function () {
 
 document.getElementById('bookingForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  alert('🎉 Your order is confirmed! Enjoy your trip to ' + selectedCity + ' ✈️');
+  alert(`🎉 Your order is confirmed!\nEnjoy your trip to ${selectedCity} ✈️`);
   closePopup();
 });
