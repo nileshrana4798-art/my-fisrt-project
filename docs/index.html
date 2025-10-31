@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Journey</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js"></script>
 </head>
 <body>
-  <!-- Header -->
+
   <header>
     <div class="logo">World Journey</div>
     <nav>
@@ -16,99 +20,78 @@
         <li><a href="#destinations">Destinations</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#bookings">All Bookings</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
+  <section class="hero" id="home">
     <div class="hero-text">
       <h1>Explore The World With Us</h1>
-      <p>Discover your next adventure with World Journey</p>
-      <button class="btn" onclick="openForm('')">Visit Now</button>
+      <p>Find your next adventure today!</p>
+      <a href="#destinations" class="btn">Visit Now</a>
     </div>
   </section>
 
-  <!-- Destinations -->
-  <section id="destinations" class="destinations">
-    <h2>Top Destinations</h2>
+  <section class="destinations" id="destinations">
+    <h2>Popular Destinations</h2>
     <div class="grid">
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34');">
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')">
         <div class="overlay">
-          <h3>Paris</h3>
-          <p>The city of love and lights, full of romance and art.</p>
-          <button class="btn" onclick="openForm('Paris')">Visit Now</button>
+          <h3>Maldives</h3>
+          <button onclick="openForm('Maldives')">Visit Now</button>
         </div>
       </div>
 
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');">
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')">
         <div class="overlay">
-          <h3>Tokyo</h3>
-          <p>Experience the future with Japan’s rich culture.</p>
-          <button class="btn" onclick="openForm('Tokyo')">Visit Now</button>
+          <h3>Switzerland</h3>
+          <button onclick="openForm('Switzerland')">Visit Now</button>
         </div>
       </div>
 
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');">
+      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1')">
         <div class="overlay">
-          <h3>Dubai</h3>
-          <p>Luxury and innovation in the desert city of dreams.</p>
-          <button class="btn" onclick="openForm('Dubai')">Visit Now</button>
-        </div>
-      </div>
-
-      <div class="card" style="background-image:url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad');">
-        <div class="overlay">
-          <h3>New York</h3>
-          <p>The city that never sleeps, where dreams come true.</p>
-          <button class="btn" onclick="openForm('New York')">Visit Now</button>
+          <h3>Japan</h3>
+          <button onclick="openForm('Japan')">Visit Now</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Booking Popup Form -->
-  <div id="popupForm" class="popup">
+  <!-- Popup Form -->
+  <div class="popup" id="popupForm">
     <div class="form-content">
       <span class="close-btn" onclick="closeForm()">&times;</span>
-      <h2>Book Your Ticket</h2>
+      <h2>Book Your Trip</h2>
       <form id="registerForm" onsubmit="return submitForm()">
-        <label>Full Name</label>
-        <input type="text" id="name" required>
-
-        <label>Email Address</label>
-        <input type="email" id="email" required>
-
-        <label>Selected City</label>
-        <input type="text" id="selectedCity" placeholder="Enter or Select City" required>
-
-        <label>Number of Tickets</label>
-        <input type="number" id="tickets" min="1" max="10" required>
-
-        <label>Travel Date</label>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <select id="selectedCity" required>
+          <option value="">-- Select City --</option>
+          <option value="Maldives">Maldives</option>
+          <option value="Switzerland">Switzerland</option>
+          <option value="Japan">Japan</option>
+          <option value="Dubai">Dubai</option>
+          <option value="Singapore">Singapore</option>
+        </select>
+        <input type="number" id="tickets" placeholder="No. of Tickets" required>
         <input type="date" id="date" required>
-
         <button type="submit" class="submit-btn">Confirm Booking</button>
       </form>
     </div>
   </div>
 
-  <!-- Booking List -->
-  <section id="bookings" class="bookings">
-    <h2>All Bookings</h2>
+  <!-- Only you can see bookings -->
+  <section class="bookings" id="bookings">
+    <h2>All Bookings (Admin View)</h2>
     <div id="bookingList"></div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 World Journey | Designed by Khushi</p>
+    <p>© 2025 World Journey | All Rights Reserved</p>
   </footer>
 
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-  <!-- Custom Script -->
   <script src="script.js"></script>
 </body>
 </html>
