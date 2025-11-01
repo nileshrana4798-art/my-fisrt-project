@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>World Journey – Plan Your Trip</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Quick popup style for city details */
+    .details-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .details-content {
+      background: #fff;
+      width: 90%;
+      max-width: 700px;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+      overflow-y: auto;
+      max-height: 85vh;
+    }
+    .details-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .details-content h3 { margin-top: 10px; color: #333; }
+    .details-content ul { margin-left: 20px; }
+    .details-close {
+      float: right;
+      font-size: 25px;
+      cursor: pointer;
+      color: #555;
+    }
+    .details-close:hover { color: red; }
+  </style>
 </head>
 <body>
   <header>
@@ -31,12 +68,13 @@
     <h2>Popular Destinations</h2>
     <div class="card-container">
 
-      <!-- Multiple city cards -->
+      <!-- Example City Card -->
       <div class="card">
         <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Paris" />
         <h3>Paris</h3>
         <p>₹5,000</p>
         <button onclick="openPopup('Paris', 5000)">Book Ticket</button>
+        <button onclick="openDetails('Paris')">View Details</button>
       </div>
 
       <div class="card">
@@ -44,27 +82,7 @@
         <h3>New York</h3>
         <p>₹7,500</p>
         <button onclick="openPopup('New York', 7500)">Book Ticket</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Maldives" />
-        <h3>Maldives</h3>
-        <p>₹9,000</p>
-        <button onclick="openPopup('Maldives', 9000)">Book Ticket</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1549693578-d683be217e58" alt="London" />
-        <h3>London</h3>
-        <p>₹6,800</p>
-        <button onclick="openPopup('London', 6800)">Book Ticket</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126" alt="Tokyo" />
-        <h3>Tokyo</h3>
-        <p>₹8,500</p>
-        <button onclick="openPopup('Tokyo', 8500)">Book Ticket</button>
+        <button onclick="openDetails('New York')">View Details</button>
       </div>
 
       <div class="card">
@@ -72,83 +90,21 @@
         <h3>Dubai</h3>
         <p>₹6,200</p>
         <button onclick="openPopup('Dubai', 6200)">Book Ticket</button>
+        <button onclick="openDetails('Dubai')">View Details</button>
       </div>
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Singapore" />
-        <h3>Singapore</h3>
-        <p>₹7,000</p>
-        <button onclick="openPopup('Singapore', 7000)">Book Ticket</button>
+        <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126" alt="Tokyo" />
+        <h3>Tokyo</h3>
+        <p>₹8,500</p>
+        <button onclick="openPopup('Tokyo', 8500)">Book Ticket</button>
+        <button onclick="openDetails('Tokyo')">View Details</button>
       </div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe" alt="Bali" />
-        <h3>Bali</h3>
-        <p>₹5,800</p>
-        <button onclick="openPopup('Bali', 5800)">Book Ticket</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1526481280691-9062fd49d3f2" alt="Rome" />
-        <h3>Rome</h3>
-        <p>₹6,400</p>
-        <button onclick="openPopup('Rome', 6400)">Book Ticket</button>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba" alt="Bangkok" />
-        <h3>Bangkok</h3>
-        <p>₹4,900</p>
-        <button onclick="openPopup('Bangkok', 4900)">Book Ticket</button>
-      </div>
     </div>
   </section>
 
-  <!-- 🌍 About Section -->
-  <section id="about" class="about">
-    <div class="about-container">
-      <div class="about-text">
-        <h2>About Us</h2>
-        <p>
-          <strong>World Journey</strong> helps you explore the world with ease. From the romantic streets of Paris to the beaches of Bali, we bring you closer to your dream destinations with 
-          affordable and exciting travel experiences.
-        </p>
-        <p>
-          Our travel experts ensure every trip is memorable, comfortable, and perfectly planned — because your adventure deserves the best.
-        </p>
-      </div>
-      <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764b43" alt="About Us" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ✉️ Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>We’d love to hear from you! Send us your queries or feedback.</p>
-
-    <div class="contact-container">
-      <div class="contact-info">
-        <p><strong>Email:</strong> info@worldjourney.com</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Address:</strong> 123, Global Street, Mumbai, India</p>
-      </div>
-
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" rows="4" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 World Journey | All Rights Reserved</p>
-  </footer>
-
-  <!-- Popup -->
+  <!-- Popup for Booking -->
   <div id="popup" class="popup">
     <div class="popup-content">
       <span class="close" onclick="closePopup()">&times;</span>
@@ -164,6 +120,78 @@
     </div>
   </div>
 
-  <script type="module" src="script.js"></script>
+  <!-- City Details Popup -->
+  <div id="detailsPopup" class="details-popup">
+    <div class="details-content">
+      <span class="details-close" onclick="closeDetails()">&times;</span>
+      <div id="detailsContainer"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    // ✅ Booking Popup
+    window.openPopup = function(city, price) {
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("city").value = city;
+      const ticketsInput = document.getElementById("tickets");
+      const totalInput = document.getElementById("total");
+
+      ticketsInput.addEventListener("input", () => {
+        totalInput.value = "₹" + ticketsInput.value * price;
+      });
+    };
+    window.closePopup = function() {
+      document.getElementById("popup").style.display = "none";
+    };
+
+    // ✅ City Details Data
+    const cityDetails = {
+      "Paris": {
+        img: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade",
+        desc: "The city of love, lights, and art. Visit the iconic Eiffel Tower, Louvre Museum, and Seine River.",
+        places: ["Eiffel Tower", "Louvre Museum", "Notre-Dame Cathedral"],
+        package: { days: 5, price: "₹50,000", includes: "Hotel, Meals, City Tour" }
+      },
+      "New York": {
+        img: "https://images.unsplash.com/photo-1549924231-f129b911e442",
+        desc: "The city that never sleeps! Explore Times Square, Central Park, and the Statue of Liberty.",
+        places: ["Times Square", "Central Park", "Statue of Liberty"],
+        package: { days: 6, price: "₹65,000", includes: "Hotel, Breakfast, Sightseeing" }
+      },
+      "Dubai": {
+        img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c",
+        desc: "Luxury, adventure, and architecture meet in Dubai. Visit Burj Khalifa and Desert Safari.",
+        places: ["Burj Khalifa", "Palm Jumeirah", "Desert Safari"],
+        package: { days: 4, price: "₹55,000", includes: "Hotel, Transfers, Safari" }
+      },
+      "Tokyo": {
+        img: "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc",
+        desc: "A mix of tradition and technology. Explore Tokyo Tower, Shibuya, and ancient temples.",
+        places: ["Tokyo Tower", "Shibuya Crossing", "Asakusa Temple"],
+        package: { days: 5, price: "₹58,000", includes: "Hotel, Transport, Local Guide" }
+      }
+    };
+
+    // ✅ Open City Details
+    window.openDetails = function(city) {
+      const data = cityDetails[city];
+      const detailsContainer = document.getElementById("detailsContainer");
+      detailsContainer.innerHTML = `
+        <h2>${city}</h2>
+        <img src="${data.img}" alt="${city}">
+        <p>${data.desc}</p>
+        <h3>Popular Places:</h3>
+        <ul>${data.places.map(p => `<li>${p}</li>`).join('')}</ul>
+        <h3>Package Details:</h3>
+        <p><strong>Duration:</strong> ${data.package.days} Days</p>
+        <p><strong>Price:</strong> ${data.package.price}</p>
+        <p><strong>Includes:</strong> ${data.package.includes}</p>
+      `;
+      document.getElementById("detailsPopup").style.display = "flex";
+    };
+    window.closeDetails = function() {
+      document.getElementById("detailsPopup").style.display = "none";
+    };
+  </script>
 </body>
 </html>
